@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchWeather, fetchMockWeather } from '../actions';
+import { fetchWeather, fetchMockWeather, fetchTides, fetchMockTides } from '../actions';
 
 class Weather extends Component {
 
@@ -13,6 +13,7 @@ class Weather extends Component {
     // Mock weather
     componentDidMount() {
     this.props.fetchMockWeather();
+    this.props.fetchMockTides();
   }
 
   renderCurrently = () => {
@@ -73,6 +74,21 @@ class Weather extends Component {
     }
   }
 
+  renderTides = () => {
+    const currently = this.props.weather.currently;
+    if (!currently) {
+      return <div>Loading ...</div>
+    }
+    if (currently) {
+      debugger;
+      return (
+        <div>
+          renderTides
+        </div>
+      )
+    }
+  }
+
 
 
   render() {
@@ -87,6 +103,7 @@ class Weather extends Component {
         <div>
           {this.renderLocality()}
           {this.renderCurrently()}
+          {this.renderTides()}
         </div>
       )
     }
@@ -104,11 +121,17 @@ class Weather extends Component {
 // Mock mapStateToProps
 const mapStateToProps = state => {
   return {
-    weather: state.mock
+    weather: state.mockWeather,
+    tides: state.mockTides
   }
 }
 
 export default connect(
   mapStateToProps,
-  { fetchWeather, fetchMockWeather }
+  {
+    fetchWeather,
+    fetchMockWeather,
+    fetchTides,
+    fetchMockTides
+  }
 )(Weather);

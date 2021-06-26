@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
 import { weatherReducer } from './weatherReducer';
-import { tideReducer } from './tideReducer';
-import { mockReducer } from './mockReducer';
+import { tidesReducer } from './tidesReducer';
+import { mockWeatherReducer } from './mockWeatherReducer';
+import { mockTidesReducer } from './mockTidesReducer';
 
 export default combineReducers({
   weather: weatherReducer,
-  tides: tideReducer,
-  mock: mockReducer
+  tides: tidesReducer,
+  mockWeather: mockWeatherReducer,
+  mockTides: mockTidesReducer
 });
