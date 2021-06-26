@@ -5,13 +5,8 @@ import { fetchTides, fetchMockTides } from '../actions';
 
 class Tides extends Component {
 
-  // Real Tides
-  // componentDidMount() {
-  //   this.props.fetchTides();
-  // }
-
-    // Mock tides
   componentDidMount() {
+    // this.props.fetchTides();
     this.props.fetchMockTides();
   }
 
@@ -62,16 +57,11 @@ class Tides extends Component {
   }
 }
 
-// Real mapStateToProps
-// const mapStateToProps = state => {
-//   debugger;
-//   return {
-//     tides: state.tides
-//   }
-// }
 
-// Mock mapStateToProps
 const mapStateToProps = state => {
+  // return {
+  //   tides: state.tides
+  // }
   return {
     tides: state.mockTides
   }

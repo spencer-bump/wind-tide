@@ -36,14 +36,14 @@ export const fetchMockTides = () => {
 // export const fetchTides = null;
 // TODO: issue dispatch
 export const fetchTides = () => async dispatch => {
-  const response = await tides.end(function (res) {
+  const response = await tides.end(function (res, dispatch) {
       if (res.error) throw new Error(res.error);
 
       console.log(res.body);
-      // debugger;
+      // TODO: dispatch is not in scope
       // dispatch: ({
       //   type: 'FETCH_TIDES',
-      //   payload: response.data
+      //   payload: res.body
       // });
     });
 };
