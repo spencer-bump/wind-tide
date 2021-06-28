@@ -1,0 +1,7 @@
+export const FETCH_WEATHER = 'FETCH_WEATHER';
+
+export const FETCH_MOCK_WEATHER = 'FETCH_MOCK_WEATHER';
+
+export const FETCH_TIDES = 'FETCH_TIDES';
+
+export const FETCH_MOCK_TIDES = 'FETCH_MOCK_TIDES';

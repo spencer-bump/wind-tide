@@ -1,9 +1,11 @@
-
-
 import weather from '../apis/darkSky';
 import tides from '../apis/tides';
+
+import { FETCH_WEATHER, FETCH_TIDES } from './types';
 import { DARKSKY_KEY, TIDES_KEY } from '../config/keys';
 
+// For development
+import { FETCH_MOCK_WEATHER, FETCH_MOCK_TIDES } from './types';
 import { MOCK_WEATHER_DATA, MOCK_TIDE_DATA } from '../apis/mock';
 
 //  "proxy":  "https://api.darksky.net",
