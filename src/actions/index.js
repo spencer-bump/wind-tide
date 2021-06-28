@@ -13,7 +13,7 @@ export const fetchWeather = () => async dispatch => {
   const response = await weather.get(`/forecast/${DARKSKY_KEY}/20.89249643,-156.4249983`)
   console.log(response.data);
   dispatch({
-    type: 'FETCH_WEATHER',
+    type: FETCH_WEATHER,
     payload: response.data
   });
 };
@@ -21,7 +21,7 @@ export const fetchWeather = () => async dispatch => {
 export const fetchMockWeather = () => {
   console.log(MOCK_WEATHER_DATA);
   return {
-    type: 'FETCH_MOCK_WEATHER',
+    type: FETCH_MOCK_WEATHER,
     payload: MOCK_WEATHER_DATA
   }
 }
@@ -29,7 +29,7 @@ export const fetchMockWeather = () => {
 export const fetchMockTides = () => {
   console.log(MOCK_TIDE_DATA);
   return {
-    type: 'FETCH_MOCK_TIDES',
+    type: FETCH_MOCK_TIDES,
     payload: MOCK_TIDE_DATA
   }
 }
@@ -44,7 +44,7 @@ export const fetchTides = () => async dispatch => {
       console.log(res.body);
       // TODO: dispatch is not in scope
       // dispatch: ({
-      //   type: 'FETCH_TIDES',
+      //   type: FETCH_TIDES,
       //   payload: res.body
       // });
     });

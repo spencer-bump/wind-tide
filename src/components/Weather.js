@@ -11,7 +11,7 @@ class Weather extends Component {
   // }
 
     // Mock weather
-    componentDidMount() {
+  componentDidMount() {
     this.props.fetchMockWeather();
     // this.props.fetchWeather();
   }
