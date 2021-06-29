@@ -35,17 +35,18 @@ export const fetchMockTides = () => {
 }
 
 
-// export const fetchTides = null;
+export const fetchTides = null;
 // TODO: issue dispatch
-export const fetchTides = () => async dispatch => {
-  const response = await tides.end(function (res, dispatch) {
-      if (res.error) throw new Error(res.error);
+// export const fetchTides = () => async dispatch => {
+//   const response = await tides.end(function (res, dispatch) {
+//       if (res.error) throw new Error(res.error);
 
-      console.log(res.body);
-      // TODO: dispatch is not in scope
-      // dispatch: ({
-      //   type: FETCH_TIDES,
-      //   payload: res.body
-      // });
-    });
-};
+//       console.log(res.body);
+//       // TODO: dispatch is not in scope
+//       // dispatch: ({
+//       //   type: FETCH_TIDES,
+//       //   payload: res.body
+//       // });
+//     });
+// };
+
