@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Weather from './Weather';
 import Tides from './Tides';
 import Header from './Header';
+import Welcome from './Welcome';
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
       <BrowserRouter>
         <div>
           <Header />
-          <Route path="/" exact component={Weather} />
+          <Route path="/" exact component={Welcome} />
           <Route path="/tides" exact component={Tides} />
           <Route path="/weather" exace component={Weather} />
         </div>

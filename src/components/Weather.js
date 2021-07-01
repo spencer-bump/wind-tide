@@ -5,75 +5,102 @@ import { fetchWeather, fetchMockWeather } from '../actions';
 
 class Weather extends Component {
 
-  // Real Weather API
-  // componentDidMount() {
-  //   this.props.fetchWeather();
-  // }
-
-    // Mock weather
   componentDidMount() {
     this.props.fetchMockWeather();
     // this.props.fetchWeather();
   }
 
-  renderCurrently = () => {
-    const currently = this.props.weather.currently;
-    if (!currently) {
-      return <div>Loading ...</div>
-    }
-    if (currently) {
-        return (
-          <div>
-            <ul>
-              <li>time: {currently.time}</li>
-              <li>summary: {currently.summary}</li>
-              <li>icon: {currently.icon}</li>
-              <li>nearestStormDistance: {currently.nearestStormDistance}</li>
-              <li>nearestStormBearing: {currently.nearestStormBearing}</li>
-              <li>precipIntensity: {currently.precipIntensity}</li>
-              <li>precipProbability: {currently.precipProbability}</li>
-              <li>temperature: {currently.temperature}</li>
-              <li>apparentTemperature: {currently.apparentTemperature}</li>
-              <li>dewPoint: {currently.dewPoint}</li>
-              <li>humidity: {currently.humidity}</li>
-              <li>pressure: {currently.pressure}</li>
-              <li>windSpeed: {currently.windSpeed}</li>
-              <li>windGust: {currently.windGust}</li>
-              <li>windBearing: {currently.windBearing}</li>
-              <li>cloudCover: {currently.cloudCover}</li>
-              <li>uvIndex: {currently.uvIndex}</li>
-              <li>visibility: {currently.visibility}</li>
-              <li>ozone: {currently.ozone}</li>
-            </ul>
-          </div>
-        )
-    }
-  }
+  renderLocality = weather => {
+    return (
+      <div className="ui container">
+        <h3>Locality</h3>
+        <ul>
+          <li>latitude:  {weather.latitude}</li>
+          <li>longitude:  {weather.longitude}</li>
+          <li>timezone:  {weather.timezone}</li>
+          <li>offset:  {weather.offset}</li>
+        </ul>
+      </div>
+    )
+  };
 
-  renderLocality = () => {
-    const currently = this.props.weather.currently;
-    if (!currently) {
-      return <div>Loading ...</div>
-    }
-    if (currently) {
-      return (
-        <div>
+  renderCurrently = currently => {
+    const date = new Date((currently.time)*1000).toLocaleString();
+    return (
+      <div className="ui container">
+        <h3>Currently</h3>
+        <ul>
+          <li>apparentTemperature: {currently.apparentTemperature}</li>
+          <li>cloudCover: {currently.cloudCover}</li>
+          <li>dewPoint: {currently.dewPoint}</li>
+          <li>humidity: {currently.humidity}</li>
+          <li>icon: {currently.icon}</li>
+          <li>nearestStormDistance: {currently.nearestStormDistance}</li>
+          <li>nearestStormBearing: {currently.nearestStormBearing}</li>
+          <li>ozone: {currently.ozone}</li>
+          <li>precipIntensity: {currently.precipIntensity}</li>
+          <li>precipProbability: {currently.precipProbability}</li>
+          <li>pressure: {currently.pressure}</li>
+          <li>summary: {currently.summary}</li>
+          <li>temperature: {currently.temperature}</li>
+          <li>time: {date}</li>
+          <li>uvIndex: {currently.uvIndex}</li>
+          <li>visibility: {currently.visibility}</li>
+          <li>windBearing: {currently.windBearing}</li>
+          <li>windSpeed: {currently.windSpeed}</li>
+          <li>windGust: {currently.windGust}</li>
+        </ul>
+      </div>
+    )
+  };
+
+  renderDaily = daily => {
+    let reDate = new RegExp(/^\d+\/\d+/i);
+    return (
+      <div className="ui container">
+        <h3>Daily</h3>
+        <ul>
+          <li>summary: {daily.summary}</li>
+          <li>icon: {daily.icon}</li>
           <ul>
-            <li>timezone:  {this.props.weather.timezone}</li>
-            <li>latitude:  {this.props.weather.latitude}</li>
-            <li>longitude:  {this.props.weather.longitude}</li>
-            <li>
-              <p>Hourly Summary: {this.props.weather.hourly.summary}</p>
-            </li>
-            <li>
-              <p>Daily Summary: {this.props.weather.daily.summary}</p>
-            </li>
+            {daily.data.map(day => {
+              const date = new Date((day.time)*1000).toLocaleString();
+              let showDate = date.match(reDate)[0];
+              return (
+                <li key={day.time} >{`${showDate} windSpeed: ${day.windSpeed}, windGust: ${day.windGust}, ${day.summary}`}</li>
+              )
+            })}
           </ul>
-        </div>
-      )
-    }
-  }
+        </ul>
+      </div>
+    )
+  };
 
+  renderHourly = hourly => {
+    let reDate = new RegExp(/^\d+\/\d+/i);
+    let reTime = new RegExp(/\d+:\d+:\d+ \S+/i);
+    return (
+      <div className="ui container">
+        <h3>Hourly</h3>
+        <ul>
+          <li>summary: {hourly.summary}</li>
+          <li>icon: {hourly.icon}</li>
+          <ul>
+            {
+              hourly.data.map(hour => {
+                const date = new Date((hour.time)*1000).toLocaleString();
+                let showTime = date.match(reTime)[0];
+                let showDate = date.match(reDate)[0];
+                return (
+                  <li key={hour.time} >{showDate} {showTime}: windSpeed: {hour.windSpeed}, windGust: {hour.windGust}, {hour.summary}</li>
+                )
+              })
+            }
+          </ul>
+        </ul>
+      </div>
+    )
+  };
 
   render() {
     if (this.props.weather.length === 0) {
@@ -83,11 +110,14 @@ class Weather extends Component {
         </div>
       )
     } else {
+      const weather = this.props.weather;
       return (
         <div>
-          <h3>Weather</h3>
-          {this.renderLocality()}
-          {this.renderCurrently()}
+          <h2>Weather</h2>
+          {this.renderLocality(weather)}
+          {this.renderCurrently(weather.currently)}
+          {this.renderDaily(weather.daily)}
+          {this.renderHourly(weather.hourly)}
         </div>
       )
     }

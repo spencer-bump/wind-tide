@@ -14,7 +14,7 @@ const Header = () => {
       </Link>
       <div className="right menu" >
         <Link to="/" className="ui item" >
-          Tides
+          Welcome
         </Link>
         {/*<GoogleAuth />*/}
       </div>
