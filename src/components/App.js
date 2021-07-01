@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Weather from './Weather';
-import Tides from './Tides';
+import Weather from './weather/Weather';
+import Tides from './tides/Tides';
 import Header from './Header';
 import Welcome from './Welcome';
 
