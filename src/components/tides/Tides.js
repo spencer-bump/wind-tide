@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchTides, fetchMockTides } from '../../actions';
-import Extremes from './Extremes';
-import Heights from './Heights';
+import ExtremeList from './ExtremeList';
+import HeightList from './HeightList';
 import LocaleTides from './LocaleTides';
 
 class Tides extends Component {
@@ -26,8 +26,8 @@ class Tides extends Component {
         <div>
           <h3>Tides</h3>
           <LocaleTides tides={tides} />
-          <Extremes extremes={tides.extremes} />
-          <Heights heights={tides.heights} />
+          <ExtremeList extremes={tides.extremes} />
+          <HeightList heights={tides.heights} />
         </div>
       )
     }
