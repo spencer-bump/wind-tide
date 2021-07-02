@@ -10,13 +10,15 @@ const Daily = props => {
         <li>summary: {daily.summary}</li>
         <li>icon: {daily.icon}</li>
         <ul>
-          {daily.data.map(day => {
-            const date = new Date((day.time)*1000).toLocaleString();
-            let showDate = date.match(reDate)[0];
-            return (
-              <li key={day.time} >{`${showDate} windSpeed: ${day.windSpeed}, windGust: ${day.windGust}, ${day.summary}`}</li>
-            )
-          })}
+          {
+            daily.data.map(day => {
+              const date = new Date((day.time)*1000).toLocaleString();
+              let showDate = date.match(reDate)[0];
+              return (
+                <li key={day.time} >{`${showDate} windSpeed: ${day.windSpeed}, windGust: ${day.windGust}, ${day.summary}`}</li>
+              )
+            })
+          }
         </ul>
       </ul>
     </div>

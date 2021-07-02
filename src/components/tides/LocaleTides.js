@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TidesLocale = props => {
+const LocaleTides = props => {
   let tides = props.tides;
   const date = new Date((tides.timestamp)*1000).toLocaleString();
   return (
@@ -20,4 +20,4 @@ const TidesLocale = props => {
   );
 };
 
-export default TidesLocale;
+export default LocaleTides;

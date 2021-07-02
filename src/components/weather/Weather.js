@@ -5,7 +5,7 @@ import { fetchWeather, fetchMockWeather } from '../../actions';
 import Currently from './Currently';
 import Daily from './Daily';
 import Hourly from './Hourly';
-import WeatherLocale from './WeatherLocale';
+import LocaleWeather from './LocaleWeather';
 
 class Weather extends Component {
 
@@ -41,7 +41,7 @@ class Weather extends Component {
       return (
         <div>
           <h2>Weather</h2>
-          <WeatherLocale weather={weather} />
+          <LocaleWeather weather={weather} />
           <Currently currently={weather.currently} />
           <Daily daily={weather.daily} />
           <Hourly hourly={weather.hourly} />

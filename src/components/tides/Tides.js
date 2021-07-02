@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchTides, fetchMockTides } from '../../actions';
 import Extremes from './Extremes';
 import Heights from './Heights';
-import TidesLocale from './TidesLocale';
+import LocaleTides from './LocaleTides';
 
 class Tides extends Component {
 
@@ -25,7 +25,7 @@ class Tides extends Component {
       return (
         <div>
           <h3>Tides</h3>
-          <TidesLocale tides={tides} />
+          <LocaleTides tides={tides} />
           <Extremes extremes={tides.extremes} />
           <Heights heights={tides.heights} />
         </div>
