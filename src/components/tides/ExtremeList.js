@@ -6,7 +6,7 @@ const ExtremeList = props => {
   let extremes = props.extremes;
   return (
     <div className="ui segment">
-      <h3>Extremes</h3>
+      <h3>Peak Tides</h3>
       <div className="ui list">
         {
           extremes.map(extreme => {

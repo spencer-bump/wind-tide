@@ -16,9 +16,30 @@ class Weather extends Component {
 
   componentDidMount() {
     this.props.fetchMockWeather();
-    // this.props.fetchWeather();
-
   }
+
+
+  // componentDidMount() {
+  //   const fetch = this.props.fetchWeather;
+  //   fetch();
+  //   const currentTime = new Date().getTime();  //current unix timestamp
+  //   // const execTime = new Date().setHours(4,30,0,0);  //API call time = today at 20:00
+  //   const execTime = currentTime + 60000;
+  //   let timeLeft = 0;
+  //   if(currentTime < execTime) {
+  //     //it's currently earlier than 20:00
+  //     timeLeft = execTime - currentTime;
+  //   } else {
+  //     //it's currently later than 20:00, schedule for tomorrow at 20:00
+  //     timeLeft = execTime + 86400000 - currentTime
+  //   }
+  //   setTimeout(function() {
+  //     setInterval(function() {
+  //       fetch();
+  //       console.log("mock weather fetched");
+  //     }, 300000, fetch);  //repeat every 5 min, 12/hr 288/day
+  //   }, timeLeft, fetch);  //wait until 4:00 as calculated above
+  // }
 
   render() {
     if (this.props.weather.length === 0) {
@@ -32,7 +53,7 @@ class Weather extends Component {
       let timeNow   = weather.currently.time;
       return (
         <div>
-          <h2>{`Weather for ${showMoDayYr(timeNow)}`}</h2>
+          <h3>{`Weather for ${showMoDayYr(timeNow)}`}</h3>
           <LocaleWeather weather={weather} />
           <CurrentlyList currently={weather.currently} />
           <DailyList timeNow={timeNow} daily={weather.daily} />
@@ -45,6 +66,7 @@ class Weather extends Component {
 }
 
 // Real mapStateToProps
+// state.weather
 // const mapStateToProps = state => {
 //   debugger;
 //   return {
@@ -53,6 +75,7 @@ class Weather extends Component {
 // }
 
 // Mock mapStateToProps
+// state.mockWeather
 const mapStateToProps = state => {
   return {
     weather: state.mockWeather

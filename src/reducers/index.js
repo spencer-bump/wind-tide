@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-
+// REDUCERS
 import { weatherReducer } from './weatherReducer';
 import { tidesReducer } from './tidesReducer';
 import { mockWeatherReducer } from './mockWeatherReducer';

@@ -3,9 +3,6 @@ import React from 'react';
 const LocaleWeather = props => {
   let weather = props.weather;
   let flags = props.weather.flags;
-  let sources = flags.sources.map(source => {
-                                    return source
-                                  }).join(", ");
   return (
       <div className="ui segment">
         <h3 className="ui header">Kanaha Beach Park</h3>

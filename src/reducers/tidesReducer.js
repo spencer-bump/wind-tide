@@ -7,5 +7,4 @@ export const tidesReducer = (state = [], action) => {
     default:
       return state;
   };
-
 };

@@ -6,6 +6,7 @@ const HeightList = props => {
   return (
     <div className="ui segment">
       <h3>{`Heights 24 Hour Forecast`}</h3>
+
       <div className="ui list">
         {
           heights.map(height => {
@@ -20,6 +21,5 @@ const HeightList = props => {
     </div>
   );
 };
-
 
 export default HeightList;

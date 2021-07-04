@@ -16,6 +16,4 @@ export const showMoDay = timestamp => {
 
 export const showMoDayYr = timestamp => {
   return (new Date((timestamp)*1000).toLocaleDateString()).match(new RegExp(/^\d+\/\d+\/\d+/i))[0];
-
-}
-
+};
