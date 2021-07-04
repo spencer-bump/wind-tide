@@ -1,12 +1,13 @@
 import React from 'react';
 import TideListItem from './TideListItem';
 
-const Heights = props => {
+const HeightList = props => {
   let heights = props.heights;
+  let timeNow = props.timeNow;
   return (
     <div className="ui segment">
-      <h3>Heights:</h3>
-      <ul>
+      <h3>{`Heights 24 Hour Forecast`}</h3>
+      <div className="ui list">
         {
           heights.map(height => {
             return (
@@ -16,10 +17,10 @@ const Heights = props => {
               )
           })
         }
-      </ul>
+      </div>
     </div>
   );
 };
 
 
-export default Heights;
+export default HeightList;

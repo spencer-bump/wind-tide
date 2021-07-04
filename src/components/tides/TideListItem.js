@@ -1,15 +1,12 @@
 import React from 'react';
+import { showHrMn, showAmPm, showMoDay } from '../utilities/displayTime';
 
 const TideListItem = props => {
   let dataPoint = props.dataPoint;
-  let dateStamp = new Date((dataPoint.timestamp)*1000).toLocaleDateString();
-  let timeStamp = new Date((dataPoint.timestamp)*1000).toLocaleTimeString();
-  let showAmPm = timeStamp.match(new RegExp(/[AMP]+/i))[0];
-  let showHrMn = timeStamp.match(new RegExp(/^\d+:\d+/i))[0];
-  let showMoDay = dateStamp.match(new RegExp(/^\d+\/\d+/i))[0];
+  let timestamp = dataPoint.timestamp;
   return (
     <div className="ui segment"  key={dataPoint.timestamp}>
-      {(dataPoint.height*3.28084).toFixed(2)} ft  {dataPoint.state} at {showHrMn} {showAmPm} {showMoDay}
+      {(dataPoint.height*3.28084).toFixed(2)} ft  {dataPoint.state} at {showHrMn(timestamp)} {showAmPm(timestamp)} {showMoDay(timestamp)}
     </div>
   );
 };

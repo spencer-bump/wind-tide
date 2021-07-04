@@ -6,16 +6,16 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   return (
     <div className="ui secondary pointing menu" >
-      <Link to="/weather" className="item" >
+      <Link to="/weather" className="ui item" >
         Weather
       </Link>
       <Link to="/tides" className="ui item" >
         Tides
       </Link>
       <div className="right menu" >
-        <Link to="/" className="ui item" >
+        {/*<Link to="/" className="ui item" >
           Welcome
-        </Link>
+        </Link>*/}
         {/*<GoogleAuth />*/}
       </div>
     </div>

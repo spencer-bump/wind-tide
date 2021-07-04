@@ -4,18 +4,15 @@ const LocaleTides = props => {
   let tides = props.tides;
   const date = new Date((tides.timestamp)*1000).toLocaleString();
   return (
-    <div>
-      <ul>
-        <li>copyright: {tides.copyright}</li>
-        <li>datetime: {tides.datetime}</li>
-        <li>disclaimer: {tides.disclaimer}</li>
-        <li>latitude: {tides.latitude}</li>
-        <li>longitude: {tides.longitude}</li>
-        <li>status: {tides.status}</li>
-        <li>timestamp: {date}</li>
-        <li>timezone: {tides.timezone}</li>
-        <li>unit: {tides.unit}</li>
-      </ul>
+    <div className="ui segment">
+      <h3 className="ui header">Kanaha Beach Park</h3>
+      <div className="ui segment">
+        <div className="ui list">
+          <div>{`Data from Kahului Harbor`}</div>
+          <p>{`lat: ${(tides.latitude).toFixed(4)}, long: ${tides.longitude.toFixed(4)}`}</p>
+
+        </div>
+      </div>
     </div>
   );
 };

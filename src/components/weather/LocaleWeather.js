@@ -7,17 +7,17 @@ const LocaleWeather = props => {
                                     return source
                                   }).join(", ");
   return (
-      <div className="ui container">
-        <h3>Locale</h3>
-        <ul>
-          <li>latitude:  {weather.latitude}</li>
-          <li>longitude:  {weather.longitude}</li>
-          <li>timezone:  {weather.timezone}</li>
-          <li>offset:  {weather.offset}</li>
-          <li>sources: {sources}</li>
-          <li>nearest-station: {flags["nearest-station"]}</li>
-          <li>units: {flags.units}</li>
-        </ul>
+      <div className="ui segment">
+        <h3 className="ui header">Kanaha Beach Park</h3>
+        <div className="ui segment">
+          <div className="ui list">
+            <div>{`Data from Kahului Airport`}</div>
+            <div>{` lat: ${(weather.latitude).toFixed(4)}, long: ${weather.longitude.toFixed(4)}`}</div>
+            <div>{`Timezone: ${weather.timezone}, UTC offset: ${weather.offset}`}</div>
+            <div>{`Units: ${flags.units}`}</div>
+            <div>{`Sources: ${sources}`}</div>
+          </div>
+        </div>
       </div>
     )
 };

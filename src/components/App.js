@@ -12,7 +12,7 @@ const App = () => {
       <BrowserRouter>
         <div>
           <Header />
-          <Route path="/" exact component={Welcome} />
+          <Route path="/" exact component={Weather} />
           <Route path="/tides" exact component={Tides} />
           <Route path="/weather" exace component={Weather} />
         </div>

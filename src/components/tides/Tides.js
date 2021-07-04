@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+// utilities
+import { showMoDayYr } from '../utilities/displayTime';
+// actions
 import { fetchTides, fetchMockTides } from '../../actions';
+// components
 import ExtremeList from './ExtremeList';
 import HeightList from './HeightList';
+import HeightPlot from './HeightPlot';
 import LocaleTides from './LocaleTides';
+import Footer from './Footer';
 
 class Tides extends Component {
 
@@ -21,13 +26,16 @@ class Tides extends Component {
         </div>
       )
     } else {
-      const tides = this.props.tides;
+      let tides = this.props.tides;
+      let timeNow   = tides.timestamp;
       return (
         <div>
-          <h3>Tides</h3>
+          <h3 className="ui header">{`Tides for ${showMoDayYr(tides.timestamp)}`}</h3>
           <LocaleTides tides={tides} />
-          <ExtremeList extremes={tides.extremes} />
-          <HeightList heights={tides.heights} />
+          <ExtremeList timeNow={timeNow} extremes={tides.extremes} />
+          <HeightList timeNow={timeNow} heights={tides.heights} />
+          <HeightPlot timeNow={timeNow} heights={tides.heights} />
+          <Footer tides={tides} />
         </div>
       )
     }

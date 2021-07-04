@@ -1,33 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { showAmPm, showHrMn, showMoDay, showMoDayYr } from '../utilities/displayTime';
+import degreeToCompass from '../utilities/degreeToCompass';
 import { fetchWeather, fetchMockWeather } from '../../actions';
-import Currently from './Currently';
-import Daily from './Daily';
-import Hourly from './Hourly';
+import CurrentlyList from './CurrentlyList';
+import DailyList from './DailyList';
+import HourlyList from './HourlyList';
 import LocaleWeather from './LocaleWeather';
+
 
 class Weather extends Component {
 
   componentDidMount() {
     this.props.fetchMockWeather();
     // this.props.fetchWeather();
+
   }
-
-  renderLocality = weather => {
-    return (
-      <div className="ui container">
-        <h3>Locality</h3>
-        <ul>
-          <li>latitude:  {weather.latitude}</li>
-          <li>longitude:  {weather.longitude}</li>
-          <li>timezone:  {weather.timezone}</li>
-          <li>offset:  {weather.offset}</li>
-        </ul>
-      </div>
-    )
-  };
-
 
   render() {
     if (this.props.weather.length === 0) {
@@ -38,13 +26,14 @@ class Weather extends Component {
       )
     } else {
       const weather = this.props.weather;
+      let timeNow   = weather.currently.time;
       return (
         <div>
-          <h2>Weather</h2>
+          <h2>{`Weather for ${showMoDayYr(timeNow)}`}</h2>
           <LocaleWeather weather={weather} />
-          <Currently currently={weather.currently} />
-          <Daily daily={weather.daily} />
-          <Hourly hourly={weather.hourly} />
+          <CurrentlyList currently={weather.currently} />
+          <DailyList timeNow={timeNow} daily={weather.daily} />
+          <HourlyList timeNow={timeNow} hourly={weather.hourly} />
         </div>
       )
     }
