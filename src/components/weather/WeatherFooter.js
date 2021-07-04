@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FooterWeather = props => {
+const WeatherFooter = props => {
   const weather = props.weather;
   let flags     = weather.flags;
   let sources   = flags.sources.map(source => {
@@ -14,4 +14,4 @@ const FooterWeather = props => {
   )
 }
 
-export default FooterWeather;
+export default WeatherFooter;

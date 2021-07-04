@@ -8,15 +8,15 @@ import { fetchWeather, fetchMockWeather } from '../../actions';
 import CurrentlyList from './CurrentlyList';
 import DailyList from './DailyList';
 import HourlyList from './HourlyList';
-import LocaleWeather from './LocaleWeather';
-import FooterWeather from './FooterWeather';
+import WeatherLocale from './WeatherLocale';
+import WeatherFooter from './WeatherFooter';
 
 
-class Weather extends Component {
+class Winds extends Component {
 
   componentDidMount() {
     this.props.fetchMockWeather();
-  }
+  };
 
 
   // componentDidMount() {
@@ -53,12 +53,12 @@ class Weather extends Component {
       let timeNow   = weather.currently.time;
       return (
         <div>
-          <h3>{`Weather for ${showMoDayYr(timeNow)}`}</h3>
-          <LocaleWeather weather={weather} />
+          <h3>{`Kanaha Beach Park`}</h3>
+          <WeatherLocale weather={weather} />
           <CurrentlyList currently={weather.currently} />
           <DailyList timeNow={timeNow} daily={weather.daily} />
           <HourlyList timeNow={timeNow} hourly={weather.hourly} />
-          <FooterWeather weather={weather} />
+          <WeatherFooter weather={weather} />
         </div>
       )
     }
@@ -88,4 +88,4 @@ export default connect(
     fetchWeather,
     fetchMockWeather
   }
-)(Weather);
+)(Winds);

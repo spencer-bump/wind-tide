@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FooterTides = props => {
+const TidesFooter = props => {
   const tides = props.tides;
   return (
     <div className="ui segment">
@@ -10,4 +10,4 @@ const FooterTides = props => {
   );
 };
 
-export default FooterTides;
+export default TidesFooter;

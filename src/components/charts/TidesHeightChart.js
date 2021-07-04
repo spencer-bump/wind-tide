@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   VictoryAxis,
@@ -10,7 +11,7 @@ import {
 
 import { showHr, showAP } from '../utilities/displayTime';
 
-const HeightPlot = props => {
+const TidesHeightChart = props => {
   const heights = props.heights,
         extremes = props.extremes;
   const plotData = heights.map((height, index) => {
@@ -65,4 +66,4 @@ const HeightPlot = props => {
   )
 }
 
-export default HeightPlot;
+export default TidesHeightChart;
