@@ -8,18 +8,19 @@ import {
 
 const HeightPlot = props => {
   let heights = props.heights;
-  console.log("heights: ",heights);
-  let dataPlot = heights.map(height => {
+
+  let plotData = heights.map(height => {
     let timeStamp = new Date((height.timestamp)*1000).toLocaleTimeString();
-    let showAmPm = timeStamp.match(new RegExp(/[AMP]+/i))[0];
-    let showHrMn = timeStamp.match(new RegExp(/^\d+:\d+/i))[0];
+    let showAmPm = timeStamp.match(new RegExp(/[AP]+/i))[0];
+    let showHrMn = timeStamp.match(new RegExp(/^\d+/i))[0];
     return {"time": showHrMn+showAmPm, "height": height.height }
   });
-  console.log("dataPlot: ", dataPlot);
+  // console.log("heights: ",heights);
+  // console.log("plotData: ", plotData);
   return (
     <VictoryChart>
       <VictoryLine
-        data={dataPlot}
+        data={plotData}
         interpolation="natural"
         x="time"
         y="height"

@@ -12,10 +12,9 @@ const LocaleWeather = props => {
         <div className="ui segment">
           <div className="ui list">
             <div>{`Data from Kahului Airport`}</div>
-            <div>{` lat: ${(weather.latitude).toFixed(4)}, long: ${weather.longitude.toFixed(4)}`}</div>
-            <div>{`Timezone: ${weather.timezone}, UTC offset: ${weather.offset}`}</div>
+            <div>{`Lat: ${(weather.latitude).toFixed(4)}, Long: ${weather.longitude.toFixed(4)}`}</div>
+            <div>{`Timezone: ${weather.timezone} (UTC ${weather.offset})`}</div>
             <div>{`Units: ${flags.units}`}</div>
-            <div>{`Sources: ${sources}`}</div>
           </div>
         </div>
       </div>

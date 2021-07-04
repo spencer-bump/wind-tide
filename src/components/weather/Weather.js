@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showAmPm, showHrMn, showMoDay, showMoDayYr } from '../utilities/displayTime';
-import degreeToCompass from '../utilities/degreeToCompass';
+// UTILITIES
+import { showMoDayYr } from '../utilities/displayTime';
+// ACTIONS
 import { fetchWeather, fetchMockWeather } from '../../actions';
+// COMPONENTS
 import CurrentlyList from './CurrentlyList';
 import DailyList from './DailyList';
 import HourlyList from './HourlyList';
 import LocaleWeather from './LocaleWeather';
+import FooterWeather from './FooterWeather';
 
 
 class Weather extends Component {
@@ -34,6 +37,7 @@ class Weather extends Component {
           <CurrentlyList currently={weather.currently} />
           <DailyList timeNow={timeNow} daily={weather.daily} />
           <HourlyList timeNow={timeNow} hourly={weather.hourly} />
+          <FooterWeather weather={weather} />
         </div>
       )
     }

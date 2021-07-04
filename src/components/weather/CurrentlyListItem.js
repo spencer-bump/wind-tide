@@ -1,7 +1,6 @@
 import React from 'react';
 import degreeToCompass from '../utilities/degreeToCompass';
-import { showAmPm, showHrMn, showMoDay } from '../utilities/displayTime';
-
+import { showMoDay } from '../utilities/displayTime';
 
 const CurrentlyListItem = props => {
   let currently = props.currently;
@@ -13,7 +12,5 @@ const CurrentlyListItem = props => {
     </div>
   )
 }
-
-
 
 export default CurrentlyListItem;

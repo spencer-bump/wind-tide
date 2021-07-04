@@ -18,7 +18,7 @@ const HourlyList = props => {
                 return null;
               }
               return (
-                <div className="item">
+                <div key={hour.time} className="item">
                   <HourlyListItem hour={hour}/>
                 </div>
               )

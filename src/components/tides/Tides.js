@@ -9,7 +9,7 @@ import ExtremeList from './ExtremeList';
 import HeightList from './HeightList';
 import HeightPlot from './HeightPlot';
 import LocaleTides from './LocaleTides';
-import Footer from './Footer';
+import FooterTides from './FooterTides';
 
 class Tides extends Component {
 
@@ -35,7 +35,7 @@ class Tides extends Component {
           <ExtremeList timeNow={timeNow} extremes={tides.extremes} />
           <HeightList timeNow={timeNow} heights={tides.heights} />
           <HeightPlot timeNow={timeNow} heights={tides.heights} />
-          <Footer tides={tides} />
+          <FooterTides tides={tides} />
         </div>
       )
     }

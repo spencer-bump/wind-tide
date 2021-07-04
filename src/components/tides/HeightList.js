@@ -3,7 +3,6 @@ import TideListItem from './TideListItem';
 
 const HeightList = props => {
   let heights = props.heights;
-  let timeNow = props.timeNow;
   return (
     <div className="ui segment">
       <h3>{`Heights 24 Hour Forecast`}</h3>
@@ -11,7 +10,7 @@ const HeightList = props => {
         {
           heights.map(height => {
             return (
-              <div>
+              <div key={height.timestamp}>
                 <TideListItem dataPoint={height} />
               </div>
               )

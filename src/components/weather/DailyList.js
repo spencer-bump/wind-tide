@@ -1,6 +1,5 @@
 import React from 'react';
 import { showMoDay, showMoDayYr } from '../utilities/displayTime';
-import degreeToCompass from '../utilities/degreeToCompass';
 
 import DailyListItem from './DailyListItem';
 
@@ -16,7 +15,7 @@ const DailyList = props => {
         {
           data.map(day => {
             return (
-              <div>
+              <div key={day.time}>
                 <DailyListItem day={day} />
               </div>
             )

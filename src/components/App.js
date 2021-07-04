@@ -4,7 +4,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Weather from './weather/Weather';
 import Tides from './tides/Tides';
 import Header from './Header';
-import Welcome from './Welcome';
 
 const App = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { showAmPm, showHrMn, showMoDay } from '../utilities/displayTime';
+import { showAmPm, showHrMn } from '../utilities/displayTime';
 import CurrentlyListItem from './CurrentlyListItem';
 
 const CurrentlyList = props => {
