@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { showMoDayYr } from '../utilities/displayTime';
-
 import TidesHeightChart from '../charts/TidesHeightChart';
 
 const TidesLocale = props => {

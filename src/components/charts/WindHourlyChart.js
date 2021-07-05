@@ -1,10 +1,8 @@
 import React from 'react';
 import {
   VictoryAxis,
-  VictoryBar,
   VictoryChart,
   VictoryLine,
-  VictoryScatter,
   VictoryTheme
   } from 'victory';
 import { showAP, showHr, showMoDayYr } from '../utilities/displayTime';

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// UTILITIES
-import { showMoDayYr } from '../utilities/displayTime';
 // ACTIONS
 import { fetchWeather, fetchMockWeather } from '../../actions';
 // COMPONENTS

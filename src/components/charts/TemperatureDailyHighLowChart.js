@@ -1,12 +1,11 @@
 import React from 'react';
 import {
           VictoryAxis,
-          VictoryBar,
           VictoryLine,
           VictoryChart,
           VictoryTheme
         } from 'victory';
-import { showAP, showDay, showMoDay } from '../utilities/displayTime';
+import { showDay, showMoDay } from '../utilities/displayTime';
 
 const TemperatureDailyHighLowChart = props => {
   const hours = props.data.slice(0,24);

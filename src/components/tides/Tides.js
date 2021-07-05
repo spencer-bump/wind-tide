@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// utilities
-import { showMoDayYr } from '../utilities/displayTime';
 // actions
 import { fetchTides, fetchMockTides } from '../../actions';
 // components

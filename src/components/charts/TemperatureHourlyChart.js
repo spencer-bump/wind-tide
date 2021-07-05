@@ -3,7 +3,6 @@ import {
   VictoryAxis,
   VictoryChart,
   VictoryLine,
-  VictoryScatter,
   VictoryTheme
   } from 'victory';
 import { showAP, showHr, showMoDay } from '../utilities/displayTime';

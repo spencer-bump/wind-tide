@@ -2,7 +2,6 @@
 import React from 'react';
 import {
   VictoryAxis,
-  VictoryBar,
   VictoryChart,
   VictoryLine,
   VictoryScatter,
