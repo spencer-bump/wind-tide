@@ -9,7 +9,7 @@ import {
   VictoryTheme
   } from 'victory';
 
-import { showHr, showAP } from '../utilities/displayTime';
+import { showHr, showAP, showMoDayYr } from '../utilities/displayTime';
 
 const TidesHeightChart = props => {
   const heights = props.heights,
@@ -37,6 +37,7 @@ const TidesHeightChart = props => {
 
   return (
       <div>
+        <h3 className="ui header">{`Tides for ${showMoDayYr(heights[0].timestamp)}`}</h3>
         <VictoryChart
           theme={VictoryTheme.material}
           minDomain={{y: -2.0}}

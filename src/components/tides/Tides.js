@@ -5,9 +5,9 @@ import { showMoDayYr } from '../utilities/displayTime';
 // actions
 import { fetchTides, fetchMockTides } from '../../actions';
 // components
-import ExtremeList from './ExtremeList';
-import HeightList from './HeightList';
-import LocaleTides from './LocaleTides';
+import TidesExtremeList from './TidesExtremeList';
+import TidesHeightList from './TidesHeightList';
+import TidesLocale from './TidesLocale';
 import TidesFooter from './TidesFooter';
 
 class Tides extends Component {
@@ -47,9 +47,9 @@ class Tides extends Component {
       return (
         <div>
           <h3 className="ui header">{`Kanaha Beach Park`}</h3>
-          <LocaleTides tides={tides} />
-          <ExtremeList timeNow={timeNow} extremes={tides.extremes} />
-          <HeightList timeNow={timeNow} heights={tides.heights} />
+          <TidesLocale tides={tides} />
+          <TidesExtremeList timeNow={timeNow} extremes={tides.extremes} />
+          <TidesHeightList timeNow={timeNow} heights={tides.heights} />
           <TidesFooter tides={tides} />
         </div>
       )

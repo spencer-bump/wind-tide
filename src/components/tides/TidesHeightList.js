@@ -1,7 +1,7 @@
 import React from 'react';
-import TideListItem from './TideListItem';
+import TidesListItem from './TidesListItem';
 
-const HeightList = props => {
+const TidesHeightList = props => {
   let heights = props.heights;
   return (
     <div className="ui segment">
@@ -12,7 +12,7 @@ const HeightList = props => {
           heights.map(height => {
             return (
               <div key={height.timestamp}>
-                <TideListItem dataPoint={height} />
+                <TidesListItem dataPoint={height} />
               </div>
               )
           })
@@ -22,4 +22,4 @@ const HeightList = props => {
   );
 };
 
-export default HeightList;
+export default TidesHeightList;

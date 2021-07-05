@@ -1,14 +1,12 @@
 import React from 'react';
 import {
   VictoryAxis,
-  VictoryBar,
   VictoryChart,
   VictoryLine,
   VictoryScatter,
   VictoryTheme
   } from 'victory';
-
-import { showAP, showHr } from '../utilities/displayTime';
+import { showAP, showHr, showMoDay } from '../utilities/displayTime';
 
 const TemperatureHourlyChart = props => {
   const hours = props.data.slice(0,24);
@@ -29,6 +27,7 @@ const TemperatureHourlyChart = props => {
 
   return (
       <div>
+        <h3 className="ui header">{`Hourly Temp Forecast ${showMoDay(hours[0].time)} to ${showMoDay(hours[7].time)}`}</h3>
         <VictoryChart
           theme={VictoryTheme.material}
         >

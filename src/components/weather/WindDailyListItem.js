@@ -3,7 +3,7 @@ import { showMoDay } from '../utilities/displayTime';
 import degreeToCompass from '../utilities/degreeToCompass';
 import { moonPhaseDescription } from '../utilities/displayMoonPhase';
 
-const DailyListItem = props => {
+const WindDailyListItem = props => {
   let day = props.day;
   return (
     <div className="ui segment" key={day.time}>
@@ -14,4 +14,4 @@ const DailyListItem = props => {
   );
 };
 
-export default DailyListItem;
+export default WindDailyListItem;

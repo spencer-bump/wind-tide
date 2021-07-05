@@ -3,7 +3,7 @@ import degreeToCompass from '../utilities/degreeToCompass';
 import { showHr, showAmPm } from '../utilities/displayTime';
 import uvRating from '../utilities/uvRating';
 
-const HourlyListItem = props => {
+const WindHourlyListItem = props => {
   let hour = props.hour;
   return (
     <div className="ui segment" key={hour.time}>
@@ -14,4 +14,4 @@ const HourlyListItem = props => {
   );
 };
 
-export default HourlyListItem;
+export default WindHourlyListItem;

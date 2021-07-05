@@ -1,7 +1,7 @@
 import React from 'react';
 import { showHrMn, showAmPm, showMoDay } from '../utilities/displayTime';
 
-const TideListItem = props => {
+const TidesListItem = props => {
   let dataPoint = props.dataPoint;
   let timestamp = dataPoint.timestamp;
   return (
@@ -11,4 +11,4 @@ const TideListItem = props => {
   );
 };
 
-export default TideListItem;
+export default TidesListItem;

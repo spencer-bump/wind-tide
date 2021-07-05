@@ -5,14 +5,17 @@ import { showMoDayYr } from '../utilities/displayTime';
 // ACTIONS
 import { fetchWeather, fetchMockWeather } from '../../actions';
 // COMPONENTS
-import CurrentlyList from './CurrentlyList';
-import DailyList from './DailyList';
-import HourlyList from './HourlyList';
+import WindCurrentlyList from './WindCurrentlyList';
+import WindDailyList from './WindDailyList';
+import WindHourlyList from './WindHourlyList';
 import WeatherLocale from './WeatherLocale';
 import WeatherFooter from './WeatherFooter';
+import WindHourlyChart from '../charts/WindHourlyChart';
+import TemperatureDailyHighLowChart from '../charts/TemperatureDailyHighLowChart';
+import TemperatureHourlyChart from '../charts/TemperatureHourlyChart';
 
 
-class Winds extends Component {
+class Weather extends Component {
 
   componentDidMount() {
     this.props.fetchMockWeather();
@@ -49,15 +52,27 @@ class Winds extends Component {
         </div>
       )
     } else {
-      const weather = this.props.weather;
-      let timeNow   = weather.currently.time;
+      const weather   = this.props.weather,
+            currently = weather.currently,
+            daily     = weather.daily,
+            hourly    = weather.hourly,
+            timeNow   = currently.time;
       return (
         <div>
           <h3>{`Kanaha Beach Park`}</h3>
+          <div className="ui segment">
+            <WindHourlyChart data={hourly.data} />
+          </div>
+          <div className="ui segment">
+            <TemperatureDailyHighLowChart data={daily.data} />
+          </div>
+          <div className="ui segment">
+            <TemperatureHourlyChart data={hourly.data} />
+          </div>
           <WeatherLocale weather={weather} />
-          <CurrentlyList currently={weather.currently} />
-          <DailyList timeNow={timeNow} daily={weather.daily} />
-          <HourlyList timeNow={timeNow} hourly={weather.hourly} />
+          <WindCurrentlyList currently={currently} />
+          <WindDailyList timeNow={timeNow} daily={daily} />
+          <WindHourlyList timeNow={timeNow} hourly={hourly} />
           <WeatherFooter weather={weather} />
         </div>
       )
@@ -88,4 +103,4 @@ export default connect(
     fetchWeather,
     fetchMockWeather
   }
-)(Winds);
+)(Weather);

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import TideListItem from './TideListItem';
+import TidesListItem from './TidesListItem';
 
-const ExtremeList = props => {
+const TidesExtremeList = props => {
   let extremes = props.extremes;
   return (
     <div className="ui segment">
@@ -12,7 +12,7 @@ const ExtremeList = props => {
           extremes.map(extreme => {
             return (
               <div key={extreme.timestamp}>
-                <TideListItem dataPoint={extreme} />
+                <TidesListItem dataPoint={extreme} />
               </div>
               )
           })
@@ -23,4 +23,4 @@ const ExtremeList = props => {
 };
 
 
-export default ExtremeList;
+export default TidesExtremeList;

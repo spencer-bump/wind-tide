@@ -7,9 +7,9 @@ import {
   VictoryScatter,
   VictoryTheme
   } from 'victory';
-import { showAP, showHr } from '../utilities/displayTime';
+import { showAP, showHr, showMoDayYr } from '../utilities/displayTime';
 
-const WindForecastChart = props => {
+const WindHourlyChart = props => {
   const hours = (props.data).slice(0, 24); // 24 hr forecast
   const averageData = hours.map( hour => {
       return {
@@ -33,6 +33,7 @@ const WindForecastChart = props => {
 
   return (
     <div>
+    <h3 className="ui header">{`Hourly Wind Forecast ${showMoDayYr(hours[0].time)}`}</h3>
     <VictoryChart
       theme={VictoryTheme.material}
     >
@@ -62,4 +63,4 @@ const WindForecastChart = props => {
   );
 };
 
-export default WindForecastChart;
+export default WindHourlyChart;

@@ -4,11 +4,10 @@ import { showMoDayYr } from '../utilities/displayTime';
 
 import TidesHeightChart from '../charts/TidesHeightChart';
 
-const LocaleTides = props => {
+const TidesLocale = props => {
   let tides = props.tides;
   return (
     <div className="ui segment">
-      <h3 className="ui header">{`Tides for ${showMoDayYr(tides.timestamp)}`}</h3>
       <TidesHeightChart heights={tides.heights} extremes={tides.extremes}/>
       <div className="ui list">
         <div>{`Data from Kahului Harbor`}</div>
@@ -18,4 +17,4 @@ const LocaleTides = props => {
   );
 };
 
-export default LocaleTides;
+export default TidesLocale;
