@@ -26,7 +26,7 @@ const TemperatureHourlyChart = props => {
 
   return (
       <div>
-        <h3 className="ui header">{`Hourly Temp Forecast ${showMoDay(hours[0].time)} to ${showMoDay(hours[7].time)}`}</h3>
+        <h3 className="ui header">{`Hourly Temp Forecast for ${showMoDay(hours[0].time)}`}</h3>
         <VictoryChart
           theme={VictoryTheme.material}
         >

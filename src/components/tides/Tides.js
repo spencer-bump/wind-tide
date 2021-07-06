@@ -40,14 +40,13 @@ class Tides extends Component {
         </div>
       )
     } else {
-      let tides = this.props.tides;
-      let timeNow   = tides.timestamp;
+      const tides = this.props.tides;
       return (
         <div>
           <h3 className="ui header">{`Kanaha Beach Park`}</h3>
           <TidesLocale tides={tides} />
-          <TidesExtremeList timeNow={timeNow} extremes={tides.extremes} />
-          <TidesHeightList timeNow={timeNow} heights={tides.heights} />
+          <TidesExtremeList timeNow={tides.timestamp} extremes={tides.extremes} />
+          <TidesHeightList timeNow={tides.timestamp} heights={tides.heights} />
           <TidesFooter tides={tides} />
         </div>
       )

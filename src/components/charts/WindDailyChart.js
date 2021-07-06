@@ -7,31 +7,37 @@ import {
   } from 'victory';
 import { showAP, showHr, showMoDay } from '../utilities/displayTime';
 
-const WindHourlyChart = props => {
-  const hours = (props.data).slice(0, 24); // 24 hr forecast
-  const averageData = hours.map( hour => {
-      return {
-        "time": showHr(hour.time)+showAP(hour.time),
-        "speed": hour.windSpeed
-      }
-    });
-  const gustData = hours.map( hour => {
-      return {
-        "time": showHr(hour.time)+showAP(hour.time),
-        "speed": hour.windGust
-      }
-    });
+
+const WindDailyChart = props => {
+
+  const daily = props.data;
+
+  const averageData = daily.map( day => {
+    return {
+      "time": showHr(day.time)+showAP(day.time),
+      "speed": day.windSpeed
+    }
+  });
+
+  const gustData = daily.map( day => {
+    return {
+      "time": showHr(day.time)+showAP(day.time),
+      "speed": day.windGust
+    }
+  });
+
   const tickLabels = averageData.map((point, index) => {
-      if (index % 3 === 0) {
+      if (index % 2 === 0) {
           return point.time
       } else {
           return ""
       }
     });
 
-  return (
+
+  return(
     <div>
-      <h3 className="ui header">{`Hourly Wind Forecast ${showMoDay(hours[0].time)}`}</h3>
+      <h3 className="ui header">{`Hourly Wind Forecast ${showMoDay(daily[0].time)}`}</h3>
       <VictoryChart
         theme={VictoryTheme.material}
       >
@@ -50,7 +56,7 @@ const WindHourlyChart = props => {
           y="speed"
         />
         <VictoryAxis
-          tickValues={[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]}
+          tickValues={[1,2,3,4,5,6,7,8]}
           tickFormat={tickLabels}
         />
         <VictoryAxis
@@ -58,7 +64,7 @@ const WindHourlyChart = props => {
         />
       </VictoryChart>
     </div>
-  );
-};
+  )
+}
 
-export default WindHourlyChart;
+export default WindDailyChart;
