@@ -13,23 +13,23 @@ import WeatherFooter  from './WeatherFooter';
 
 // Wind Components
 import {
-          DaWindCurrentlyList,
-          DaWindDailyList,
-          DaWindHourlyList
+          WindCurrentlyList,
+          WindDailyList,
+          WindHourlyList
         } from '../wind';
 // Tide Components
 import {
-          DaTidesExtremeList,
-          DaTidesHeightList,
-          DaTidesFooter
+          TidesExtremeList,
+          TidesHeightList,
+          TidesFooter
         } from '../tides';
 // Charts
 import {
-          DaWindHourlyChart,
-          DaTempDailyHighLowChart,
-          DaTempHourlyChart,
-          DaTidesHeightChart,
-          DaWindDailyChart
+          WindHourlyChart,
+          TempDailyHighLowChart,
+          TempHourlyChart,
+          TidesHeightChart,
+          WindDailyChart
         }  from '../charts';
 
 
@@ -70,15 +70,15 @@ class Weather extends Component {
   renderSplash = (weather, tides) => {
     return (
       <div >
-        <DaWindCurrentlyList currently={weather.currently} />
+        <WindCurrentlyList currently={weather.currently} />
         <div className="ui segment">
-          <DaWindHourlyChart data={weather.hourly.data} />
+          <WindHourlyChart data={weather.hourly.data} />
         </div>
         <div className="ui segment">
-          <DaTidesHeightChart heights={tides.heights} extremes={tides.extremes}/>
+          <TidesHeightChart heights={tides.heights} extremes={tides.extremes}/>
         </div>
         <div className="ui segment">
-          <DaTempHourlyChart data={weather.hourly.data} />
+          <TempHourlyChart data={weather.hourly.data} />
         </div>
         <WeatherFooter weather={weather} />
       </div>
@@ -89,13 +89,13 @@ class Weather extends Component {
     return (
       <div >
         <div className="ui segment">
-          <DaWindDailyChart data={weather.daily.data} />
+          <WindDailyChart data={weather.daily.data} />
         </div>
         <div className="ui segment">
-          <DaWindHourlyChart data={weather.hourly.data} />
+          <WindHourlyChart data={weather.hourly.data} />
         </div>
-        <DaWindDailyList timeNow={weather.currently.time} daily={weather.daily} />
-        <DaWindHourlyList timeNow={weather.currently.time} hourly={weather.hourly} />
+        <WindDailyList timeNow={weather.currently.time} daily={weather.daily} />
+        <WindHourlyList timeNow={weather.currently.time} hourly={weather.hourly} />
         <WeatherFooter weather={weather} />
       </div>
     )
@@ -105,11 +105,11 @@ class Weather extends Component {
     return (
       <div >
         <div className="ui segment">
-          <DaTidesHeightChart heights={tides.heights} extremes={tides.extremes}/>
+          <TidesHeightChart heights={tides.heights} extremes={tides.extremes}/>
         </div>
-        <DaTidesExtremeList timeNow={tides.timestamp} extremes={tides.extremes} />
-        <DaTidesHeightList timeNow={tides.timestamp} heights={tides.heights} />
-        <DaTidesFooter tides={tides} />
+        <TidesExtremeList timeNow={tides.timestamp} extremes={tides.extremes} />
+        <TidesHeightList timeNow={tides.timestamp} heights={tides.heights} />
+        <TidesFooter tides={tides} />
       </div>
     )
   }
@@ -118,10 +118,10 @@ class Weather extends Component {
     return (
       <div>
         <div className="ui segment">
-          <DaTempHourlyChart data={weather.hourly.data} />
+          <TempHourlyChart data={weather.hourly.data} />
         </div>
         <div className="ui segment">
-          <DaTempDailyHighLowChart data={weather.daily.data} />
+          <TempDailyHighLowChart data={weather.daily.data} />
         </div>
         <WeatherFooter weather={weather} />
       </div>

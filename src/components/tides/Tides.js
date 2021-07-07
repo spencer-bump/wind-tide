@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 // actions
 import { fetchTides, fetchMockTides } from '../../actions';
 // components
-import TidesExtremeList from './TidesExtremeList';
-import TidesHeightList from './TidesHeightList';
-import TidesLocale from './TidesLocale';
-import TidesFooter from './TidesFooter';
+import TidesExtremeList from './TiExtremeList';
+import TidesHeightList from './TiHeightList';
+import TidesLocale from './TiLocale';
+
+
 
 class Tides extends Component {
 
@@ -47,7 +48,6 @@ class Tides extends Component {
           <TidesLocale tides={tides} />
           <TidesExtremeList timeNow={tides.timestamp} extremes={tides.extremes} />
           <TidesHeightList timeNow={tides.timestamp} heights={tides.heights} />
-          <TidesFooter tides={tides} />
         </div>
       )
     }

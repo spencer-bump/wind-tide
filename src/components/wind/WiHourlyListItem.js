@@ -1,5 +1,5 @@
 import React from 'react';
-import WindHourlyAccordion from '../wind/WindHourlyAccordion';
+import WindHourlyAccordion from '../wind/WiHourlyAccordion';
 
 const WindHourlyListItem = props => {
   let hour = props.hour;

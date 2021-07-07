@@ -1,5 +1,5 @@
 import React from 'react';
-import TidesListItem from './TidesListItem';
+import TidesListItem from './TiListItem';
 
 const TidesHeightList = props => {
   let heights = props.heights;

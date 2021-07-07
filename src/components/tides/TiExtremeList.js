@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TidesListItem from './TidesListItem';
+import TidesListItem from './TiListItem';
 
 const TidesExtremeList = props => {
   let extremes = props.extremes;

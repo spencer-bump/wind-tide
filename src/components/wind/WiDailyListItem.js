@@ -1,5 +1,5 @@
 import React from 'react';
-import WindDailyAccordion from '../wind/WindDailyAccordion';
+import WindDailyAccordion from '../wind/WiDailyAccordion';
 
 const WindDailyListItem = props => {
   const day = props.day;

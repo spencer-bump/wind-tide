@@ -1,8 +1,8 @@
 // Tide Components
-import TidesExtremeList   from './TidesExtremeList'
-import TidesHeightList    from './TidesHeightList'
-import TidesFooter        from './TidesFooter'
+import TiExtremeList   from './TiExtremeList'
+import TiHeightList    from './TiHeightList'
+import TiFooter        from './TiFooter'
 
-export const DaTidesExtremeList = TidesExtremeList
-export const DaTidesHeightList  = TidesHeightList
-export const DaTidesFooter      = TidesFooter
+export const TidesExtremeList = TiExtremeList
+export const TidesHeightList  = TiHeightList
+export const TidesFooter      = TiFooter
