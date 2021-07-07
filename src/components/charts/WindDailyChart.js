@@ -5,45 +5,36 @@ import {
   VictoryLine,
   VictoryTheme
   } from 'victory';
-import { showAP, showHr, showMoDay } from '../utilities/displayTime';
+import { showDay, showMoDay } from '../utilities/displayTime';
 
 
 const WindDailyChart = props => {
-
   const daily = props.data;
-
   const averageData = daily.map( day => {
-    return {
-      "time": showHr(day.time)+showAP(day.time),
-      "speed": day.windSpeed
-    }
+    return { "day": showDay(day.time), "speed": day.windSpeed }
   });
 
   const gustData = daily.map( day => {
-    return {
-      "time": showHr(day.time)+showAP(day.time),
-      "speed": day.windGust
-    }
+    return { "day": showDay(day.time), "speed": day.windGust}
   });
 
   const tickLabels = averageData.map((point, index) => {
-      if (index % 2 === 0) {
-          return point.time
-      } else {
-          return ""
-      }
-    });
+
+        return point.day
+
+  });
+
 
 
   return(
     <div>
-      <h3 className="ui header">{`Hourly Wind Forecast ${showMoDay(daily[0].time)}`}</h3>
+      <h3 className="ui header">{`Daily Wind Forecast ${showMoDay(daily[0].time)} to ${showMoDay(daily[7].time)}`}</h3>
       <VictoryChart
         theme={VictoryTheme.material}
       >
         <VictoryLine
           data={averageData}
-          x="time"
+          x="day"
           y="speed"
         />
         <VictoryLine
@@ -52,7 +43,7 @@ const WindDailyChart = props => {
             parent: { border: "1px solid #ccc"}
           }}
           data={gustData}
-          x="time"
+          x="day"
           y="speed"
         />
         <VictoryAxis

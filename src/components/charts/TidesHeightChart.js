@@ -8,7 +8,7 @@ import {
   VictoryTheme
   } from 'victory';
 
-import { showHr, showAP, showMoDay } from '../utilities/displayTime';
+import { showHr, showHrMn, showAP, showMoDay } from '../utilities/displayTime';
 
 const TidesHeightChart = props => {
   const heights = props.heights,
@@ -26,6 +26,16 @@ const TidesHeightChart = props => {
       "label": (extreme.height*3.28084).toFixed(1)
     }
   });
+
+  const extremeTime = extremes.map( extreme => {
+    return {
+      "x": showHr(extreme.timestamp)+showAP(extreme.timestamp),
+      "y": 0,
+      "label": showHrMn(extreme.timestamp)+showAP(extreme.timestamp)
+    }
+  })
+
+
   const tickLabels = plotData.map((point, index) => {
       if (index % 3 === 0) {
           return point.time
@@ -59,6 +69,12 @@ const TidesHeightChart = props => {
             style={{ data: { fill: "#c43a31" } }}
             size={7}
             data={extremeData}
+            labels={({datum}) => `${datum.label}`}
+          />
+          <VictoryScatter
+            style={{ data: { fill: "#3140c4" } }}
+            size={5}
+            data={extremeTime}
             labels={({datum}) => `${datum.label}`}
           />
         </VictoryChart>

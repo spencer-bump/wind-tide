@@ -7,3 +7,5 @@ export const FETCH_TIDES = 'FETCH_TIDES';
 export const FETCH_MOCK_TIDES = 'FETCH_MOCK_TIDES';
 
 export const FETCH_PLACEHOLDER = 'FETCH_PLACEHOLDER';
+
+export const FETCH_NEW_TIDES = 'FETCH_NEW_TIDES';
