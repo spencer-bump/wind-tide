@@ -1,13 +1,13 @@
 import React from 'react';
 
-const WindLocale = props => {
+const WeatherLocale = props => {
   const weather    = props.weather,
         flags      = weather.flags;
   return (
     <div>
       <div className="ui segment">
         <div className="ui list">
-          <div>{`Data from Kahului Airport`}</div>
+          <div>{`Weather Data from Kahului Airport`}</div>
           <div>{`Lat: ${(weather.latitude).toFixed(4)}, Long: ${weather.longitude.toFixed(4)}`}</div>
           <div>{`Timezone: ${weather.timezone} (UTC ${weather.offset})`}</div>
           <div>{`Units: ${flags.units}`}</div>
@@ -17,4 +17,4 @@ const WindLocale = props => {
     )
 };
 
-export default WindLocale;
+export default WeatherLocale;

@@ -2,25 +2,36 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Tab } from 'semantic-ui-react'
 // Actions
-import { fetchWeather, fetchMockWeather, fetchMockTides } from '../../actions';
+import {
+          fetchWeather,
+          fetchMockWeather,
+          fetchMockTides,
+          fetchPlaceholder
+        } from '../../actions';
 // Weather Components
+import WeatherFooter  from './WeatherFooter';
+import WeatherLocale  from './WeatherLocale';
 
 // Wind Components
-import WindCurrentlyList from './WindCurrentlyList';
-import WindDailyList from './WindDailyList';
-import WindHourlyList from './WindHourlyList';
-import WindLocale from './WindLocale';
-import WeatherFooter from './WeatherFooter';
+import {
+          DaWindCurrentlyList,
+          DaWindDailyList,
+          DaWindHourlyList
+        } from '../wind';
 // Tide Components
-import TidesExtremeList       from '../tides/TidesExtremeList';
-import TidesHeightList        from '../tides/TidesHeightList';
-import TidesLocale            from '../tides/TidesLocale';
-import TidesFooter            from '../tides/TidesFooter';
+import {
+          DaTidesExtremeList,
+          DaTidesHeightList,
+          DaTidesLocale,
+          DaTidesFooter
+        } from '../tides';
 // Charts
-import WindHourlyChart from '../charts/WindHourlyChart';
-import TemperatureDailyHighLowChart from '../charts/TemperatureDailyHighLowChart';
-import TemperatureHourlyChart from '../charts/TemperatureHourlyChart';
-import TidesHeightChart       from '../charts/TidesHeightChart';
+import {
+          DaWindHourlyChart,
+          DaTempDailyHighLowChart,
+          DaTempHourlyChart,
+          DaTidesHeightChart
+        }  from '../charts';
 
 
 
@@ -29,6 +40,7 @@ class Weather extends Component {
   componentDidMount() {
     this.props.fetchMockWeather();
     this.props.fetchMockTides();
+    this.props.fetchPlaceholder();
   };
 
 
@@ -57,15 +69,15 @@ class Weather extends Component {
   renderSplash = (weather, tides) => {
     return (
       <div >
-        <WindCurrentlyList currently={weather.currently} />
-        <div className="ui item">
-          <WindHourlyChart data={weather.hourly.data} />
+        <DaWindCurrentlyList currently={weather.currently} />
+        <div className="ui segment">
+          <DaWindHourlyChart data={weather.hourly.data} />
         </div>
-        <div className="ui item">
-          <TidesHeightChart heights={tides.heights} extremes={tides.extremes}/>
+        <div className="ui segment">
+          <DaTidesHeightChart heights={tides.heights} extremes={tides.extremes}/>
         </div>
-        <div className="ui item">
-          <TemperatureHourlyChart data={weather.hourly.data} />
+        <div className="ui segment">
+          <DaTempHourlyChart data={weather.hourly.data} />
         </div>
       </div>
     )
@@ -74,9 +86,9 @@ class Weather extends Component {
   renderWind = (weather, tides) => {
     return (
       <div >
-        <WindHourlyChart data={weather.hourly.data} />
-        <WindDailyList timeNow={weather.currently.time} daily={weather.daily} />
-        <WindHourlyList timeNow={weather.currently.time} hourly={weather.hourly} />
+        <DaWindHourlyChart data={weather.hourly.data} />
+        <DaWindDailyList timeNow={weather.currently.time} daily={weather.daily} />
+        <DaWindHourlyList timeNow={weather.currently.time} hourly={weather.hourly} />
       </div>
     )
   }
@@ -84,10 +96,10 @@ class Weather extends Component {
   renderTides = (weather, tides) => {
     return (
       <div >
-        <TidesLocale tides={tides} />
-        <TidesExtremeList timeNow={tides.timestamp} extremes={tides.extremes} />
-        <TidesHeightList timeNow={tides.timestamp} heights={tides.heights} />
-        <TidesFooter tides={tides} />
+        <DaTidesLocale tides={tides} />
+        <DaTidesExtremeList timeNow={tides.timestamp} extremes={tides.extremes} />
+        <DaTidesHeightList timeNow={tides.timestamp} heights={tides.heights} />
+        <DaTidesFooter tides={tides} />
       </div>
     )
   }
@@ -96,10 +108,10 @@ class Weather extends Component {
     return (
       <div>
         <div className="ui segment">
-          <TemperatureHourlyChart data={weather.hourly.data} />
+          <DaTempHourlyChart data={weather.hourly.data} />
         </div>
         <div className="ui segment">
-          <TemperatureDailyHighLowChart data={weather.daily.data} />
+          <DaTempDailyHighLowChart data={weather.daily.data} />
         </div>
       </div>
     )
@@ -128,35 +140,13 @@ class Weather extends Component {
         <div>
           <h3>{`Kanaha Beach Park`}</h3>
           <Tab panes={panes} />
-          <WindLocale weather={weather} />
+          <WeatherLocale weather={weather} />
           <WeatherFooter weather={weather} />
         </div>
       )
     }
   }
 }
-
-
-// return (
-//         <div>
-//           <h3>{`Kanaha Beach Park`}</h3>
-//           <div className="ui segment">
-//             <WindHourlyChart data={hourly.data} />
-//           </div>
-//           <div className="ui segment">
-//             <TemperatureDailyHighLowChart data={daily.data} />
-//           </div>
-//           <div className="ui segment">
-//             <TemperatureHourlyChart data={hourly.data} />
-//           </div>
-//           <WindLocale weather={weather} />
-//           <WindCurrentlyList currently={currently} />
-//           <WindDailyList timeNow={timeNow} daily={daily} />
-//           <WindHourlyList timeNow={timeNow} hourly={hourly} />
-//           <WeatherFooter weather={weather} />
-//         </div>
-//       )
-
 
 // Real mapStateToProps
 // state.weather
@@ -181,6 +171,7 @@ export default connect(
   {
     fetchWeather,
     fetchMockWeather,
-    fetchMockTides
+    fetchMockTides,
+    fetchPlaceholder
   }
 )(Weather);

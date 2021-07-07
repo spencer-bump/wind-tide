@@ -1,3 +1,12 @@
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => response.json())
+  .then(json => console.log(json));
+
+
+
+
+
+
 "flags": {"sources": ["nwspa","cmc","gfs","icon","isd","madis","nam","sref","darksky","nearest-precip"],"nearest-station": 0.552,"units": "us"}
 
 

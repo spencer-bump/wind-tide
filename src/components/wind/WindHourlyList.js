@@ -1,6 +1,6 @@
 import React from 'react';
 import { showAmPm, showHrMn } from '../utilities/displayTime';
-import WindHourlyListItem from './WindHourlyListItem';
+import WindHourlyListItem from '../wind/WindHourlyListItem';
 
 const WindHourlyList = props => {
   let hourly = props.hourly;

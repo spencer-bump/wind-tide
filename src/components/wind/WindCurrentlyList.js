@@ -1,6 +1,6 @@
 import React from 'react';
 import { showAmPm, showHrMn, showMoDayYr } from '../utilities/displayTime';
-import WindCurrentlyListItem from './WindCurrentlyListItem';
+import WindCurrentlyListItem from '../wind/WindCurrentlyListItem';
 
 const WindCurrentlyList = props => {
   const currently = props.currently;

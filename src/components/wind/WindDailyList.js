@@ -1,6 +1,6 @@
 import React from 'react';
 import { showMoDay, showMoDayYr } from '../utilities/displayTime';
-import WindDailyListItem from './WindDailyListItem';
+import WindDailyListItem from '../wind/WindDailyListItem';
 
 const WindDailyList = props => {
   let daily = props.daily;

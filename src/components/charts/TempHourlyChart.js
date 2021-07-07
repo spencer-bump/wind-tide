@@ -7,7 +7,7 @@ import {
   } from 'victory';
 import { showAP, showHr, showMoDay } from '../utilities/displayTime';
 
-const TemperatureHourlyChart = props => {
+const TempHourlyChart = props => {
   const hours = props.data.slice(0,24);
   const temperatureData = hours.map( hour => {
       return {
@@ -47,4 +47,4 @@ const TemperatureHourlyChart = props => {
     )
 }
 
-export default TemperatureHourlyChart;
+export default TempHourlyChart;

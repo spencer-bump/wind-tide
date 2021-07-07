@@ -7,7 +7,7 @@ import {
         } from 'victory';
 import { showDay, showMoDay } from '../utilities/displayTime';
 
-const TemperatureDailyHighLowChart = props => {
+const TempDailyHighLowChart = props => {
   const hours = props.data.slice(0,24);
   const highsData = hours.map( hour => {
       return {
@@ -56,4 +56,4 @@ const TemperatureDailyHighLowChart = props => {
     );
 };
 
-export default TemperatureDailyHighLowChart;
+export default TempDailyHighLowChart;

@@ -1,11 +1,12 @@
 import weather from '../apis/darkSky';
 import tides from '../apis/tides';
+import placeholder from '../apis/placeholder';
 
 import { FETCH_WEATHER, FETCH_TIDES } from './types';
 import { DARKSKY_KEY } from '../config/keys';
 
 // For development
-import { FETCH_MOCK_WEATHER, FETCH_MOCK_TIDES } from './types';
+import { FETCH_MOCK_WEATHER, FETCH_MOCK_TIDES, FETCH_PLACEHOLDER } from './types';
 import { MOCK_WEATHER_DATA, MOCK_TIDE_DATA } from '../apis/mock';
 
 //  "proxy":  "https://api.darksky.net",
@@ -44,16 +45,19 @@ export const fetchTides = () => {
 };
 
 // TODO: issue dispatch
-// export const fetchTides = () => async dispatch => {
-//   const response = await tides.end(function (res, dispatch) {
-//       if (res.error) throw new Error(res.error);
+export const fetchPlaceholder = () => async dispatch => {
+  const response = await placeholder.end(res => {
+      if (res.error) throw new Error(res.error);
 
-//       console.log(res.body);
-//       // TODO: dispatch is not in scope
-//       // dispatch: ({
-//       //   type: FETCH_TIDES,
-//       //   payload: res.body
-//       // });
-//     });
-// };
+      console.log(res.body);
+      // TODO: dispatch is not in scope
+      // dispatch: ({
+      //   type: FETCH_PLACEHOLDER,
+      //   payload: res.body
+      // });
+      return res.body;
+    });
+  // console logs a request promise
+  console.log("response: ", response);
+};
 
