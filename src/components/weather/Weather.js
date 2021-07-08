@@ -2,35 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Tab } from 'semantic-ui-react'
 // Actions
-import {
-          fetchWeather,
-          fetchMockWeather,
-          fetchMockTides,
-          fetchPlaceholder
-        } from '../../actions';
-// Weather Components
+import { fetchWeather, fetchMockWeather, fetchMockTides, fetchPlaceholder } from '../../actions';
 import WeatherFooter  from './WeatherFooter';
-
-// Wind Components
-import {
-          WindCurrentlyList,
-          WindDailyList,
-          WindHourlyList
-        } from '../wind';
+import { WindCurrentlyList, WindDailyList, WindHourlyList } from '../wind';
 // Tide Components
-import {
-          TidesExtremeList,
-          TidesHeightList,
-          TidesFooter
-        } from '../tides';
+import { TidesExtremeList, TidesHeightList, TidesFooter, TidesSnapshot } from '../tides';
 // Charts
-import {
-          WindHourlyChart,
-          TempDailyHighLowChart,
-          TempHourlyChart,
-          TidesHeightChart,
-          WindDailyChart
-        }  from '../charts';
+import { WindHourlyChart, TempDailyHighLowChart, TempHourlyChart, TidesHeightChart, WindDailyChart }  from '../charts';
 
 
 
@@ -94,9 +72,18 @@ class Weather extends Component {
         <div className="ui segment">
           <WindHourlyChart data={weather.hourly.data} />
         </div>
-        <WindDailyList timeNow={weather.currently.time} daily={weather.daily} />
-        <WindHourlyList timeNow={weather.currently.time} hourly={weather.hourly} />
-        <WeatherFooter weather={weather} />
+        <div className="ui list">
+          <div className="ui item">
+            <WindDailyList timeNow={weather.currently.time} daily={weather.daily} />
+          </div>
+          <div className="ui item">
+            <WindHourlyList timeNow={weather.currently.time} hourly={weather.hourly} />
+          </div>
+          <div className="ui item">
+            <WeatherFooter weather={weather} />
+          </div>
+        </div>
+
       </div>
     )
   }
@@ -107,6 +94,7 @@ class Weather extends Component {
         <div className="ui segment">
           <TidesHeightChart heights={tides.heights} extremes={tides.extremes}/>
         </div>
+        <TidesSnapshot heights={tides.heights} extremes={tides.extremes} />
         <TidesExtremeList timeNow={tides.timestamp} extremes={tides.extremes} />
         <TidesHeightList timeNow={tides.timestamp} heights={tides.heights} />
         <TidesFooter tides={tides} />

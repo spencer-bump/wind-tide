@@ -1,7 +1,6 @@
 import React from 'react';
 
-const WeatherFooter = props => {
-  const weather = props.weather;
+const WeatherFooter = ({ weather }) => {
   const flags     = weather.flags;
   const sources   = flags.sources.map(source => {
                                     return source

@@ -1,9 +1,7 @@
 import React from 'react';
-import degreeToCompass from '../utilities/degreeToCompass';
-import uvRating from '../utilities/uvRating';
+import { degreeToCompass, uvRating } from '../utilities';
 
-const WindCurrentlyListItem = props => {
-  let currently = props.currently;
+const WindCurrentlyListItem = ({ currently }) => {
   return (
     <div className="ui item">
       <h3 className="ui heading">{`Winds ${degreeToCompass(currently.windBearing)} at ${(currently.windSpeed).toFixed(0)} gusting to ${(currently.windGust).toFixed(0)} mph`}</h3>

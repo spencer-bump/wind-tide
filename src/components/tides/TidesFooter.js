@@ -1,7 +1,6 @@
 import React from 'react';
 
-const TiFooter = props => {
-  const tides = props.tides;
+const TiFooter = ({ tides }) => {
   return (
     <div className="ui segment">
       <div>{`Data from Kahului Harbor`}</div>

@@ -1,7 +1,6 @@
 import React from 'react';
 
-const WeatherLocale = props => {
-  const weather    = props.weather,
+const WeatherLocale = ({ weather }) => {
         flags      = weather.flags;
   return (
     <div>

@@ -1,8 +1,7 @@
 import React from 'react';
 import { showHrMn, showAmPm, showMoDay } from '../utilities/displayTime';
 
-const TidesListItem = props => {
-  let dataPoint = props.dataPoint;
+const TidesListItem = ({ dataPoint }) => {
   let timestamp = dataPoint.timestamp;
   return (
     <div className="ui segment item">

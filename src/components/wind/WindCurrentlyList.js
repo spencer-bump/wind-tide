@@ -1,9 +1,8 @@
 import React from 'react';
 import { showAmPm, showHrMn, showMoDayYr } from '../utilities/displayTime';
-import WindCurrentlyListItem from '../wind/WiCurrentlyListItem';
+import WindCurrentlyListItem from '../wind/WindCurrentlyListItem';
 
-const WindCurrentlyList = props => {
-  const currently = props.currently;
+const WindCurrentlyList = ({ currently }) => {
     return (
       <div className="ui segment">
         <h3 className="ui header">{`${showHrMn(currently.time)} ${showAmPm(currently.time)} ${showMoDayYr(currently.time)}`}</h3>

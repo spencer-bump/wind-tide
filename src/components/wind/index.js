@@ -1,7 +1,7 @@
-import WiCurrentlyList  from './WiCurrentlyList';
-import WiDailyList      from './WiDailyList';
-import WiHourlyList     from './WiHourlyList';
+import _WindCurrentlyList  from './WindCurrentlyList';
+import _WindDailyList      from './WindDailyList';
+import _WindHourlyList     from './WindHourlyList';
 
-export const WindCurrentlyList = WiCurrentlyList;
-export const WindDailyList = WiDailyList;
-export const WindHourlyList = WiHourlyList;
+export const WindCurrentlyList = _WindCurrentlyList;
+export const WindDailyList = _WindDailyList;
+export const WindHourlyList = _WindHourlyList;

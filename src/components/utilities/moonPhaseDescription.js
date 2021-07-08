@@ -1,4 +1,4 @@
-export const moonPhaseDescription = phase => {
+const moonPhaseDescription = phase => {
 
   const moonPhase = (((.97 <= phase) && (phase <= 1.0)) || ((0 <= phase) && (phase <= 0.03))) ? "The moon is a New Moon." :
                     ((0.03 < phase) && (phase <= 0.22)) ? "The moon is past New in the Waxing crescent phase." :
@@ -10,3 +10,5 @@ export const moonPhaseDescription = phase => {
                     ((0.78 < phase) && (phase <= 0.97)) ? "The moon in almost New in the Waning Crescent phase." : "";
   return moonPhase;
 }
+
+export default moonPhaseDescription;

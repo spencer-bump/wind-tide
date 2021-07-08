@@ -10,9 +10,7 @@ import {
 
 import { showHr, showHrMn, showAP, showMoDay } from '../utilities/displayTime';
 
-const TidesHeightChart = props => {
-  const heights = props.heights,
-        extremes = props.extremes;
+const TidesHeightChart = ({ heights, extremes }) => {
   const plotData = heights.map((height, index) => {
     return {
       "time": showHr(height.timestamp)+showAP(height.timestamp),

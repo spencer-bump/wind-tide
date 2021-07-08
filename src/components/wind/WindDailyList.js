@@ -1,13 +1,12 @@
 import React from 'react';
 import { showMoDay, showMoDayYr } from '../utilities/displayTime';
-import WindDailyListItem from '../wind/WiDailyListItem';
+import WindDailyListItem from '../wind/WindDailyListItem';
 
-const WindDailyList = props => {
-  let daily = props.daily;
-  let data = props.daily.data;
+const WindDailyList = ({ daily }) => {
+  let data = daily.data;
   let lastDay = data.length - 1;
   return (
-    <div className="ui segment">
+    <div className="ui  ">
       <h3>{`Week Forecast ${showMoDay(data[0].time)} to ${showMoDayYr(data[lastDay].time)}`}</h3>
       <p>{daily.summary}</p>
       <div className="ui list">

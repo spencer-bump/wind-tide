@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { showAmPm, showHr } from '../utilities/displayTime';
-import degreeToCompass from '../utilities/degreeToCompass';
-import uvRating from '../utilities/uvRating';
+import { degreeToCompass, uvRating } from '../utilities';
 
 const WindHourlyAccordion = ({ hour }) => {
 

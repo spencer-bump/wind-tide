@@ -8,13 +8,12 @@ import {
 import { showDay, showMoDay } from '../utilities/displayTime';
 
 
-const WindDailyChart = props => {
-  const daily = props.data;
-  const averageData = daily.map( day => {
+const WindDailyChart = ({ data }) => {
+  const averageData = data.map( day => {
     return { "day": showDay(day.time), "speed": day.windSpeed }
   });
 
-  const gustData = daily.map( day => {
+  const gustData = data.map( day => {
     return { "day": showDay(day.time), "speed": day.windGust}
   });
 
@@ -28,7 +27,7 @@ const WindDailyChart = props => {
 
   return(
     <div>
-      <h3 className="ui header">{`Daily Wind Forecast ${showMoDay(daily[0].time)} to ${showMoDay(daily[7].time)}`}</h3>
+      <h3 className="ui header">{`Daily Wind Forecast ${showMoDay(data[0].time)} to ${showMoDay(data[7].time)}`}</h3>
       <VictoryChart
         theme={VictoryTheme.material}
       >

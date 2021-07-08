@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { showMoDay } from '../utilities/displayTime';
-import degreeToCompass from '../utilities/degreeToCompass';
-import { moonPhaseDescription } from '../utilities/displayMoonPhase';
+import { degreeToCompass, moonPhaseDescription } from '../utilities';
 
 const WindDailyAccordion = ({ day }) => {
 

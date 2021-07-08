@@ -1,16 +1,14 @@
 import React from 'react';
 import { showAmPm, showHrMn } from '../utilities/displayTime';
-import WindHourlyListItem from '../wind/WiHourlyListItem';
+import WindHourlyListItem from '../wind/WindHourlyListItem';
 
-const WindHourlyList = props => {
-  let hourly = props.hourly;
-  let timeNow = props.timeNow;
+const WindHourlyList = ({ hourly, timeNow }) => {
   return (
-    <div className="ui segment">
+    <div className="ui ">
       <h3 className="ui header">
         {`Hourly Forecast from ${showHrMn(timeNow)} ${showAmPm(timeNow)}`}
       </h3>
-      <div>{hourly.summary}</div>
+      <p>{hourly.summary}</p>
       <div className="ui list">
           {
             hourly.data.map((hour, index) => {

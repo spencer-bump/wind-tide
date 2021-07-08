@@ -1,8 +1,7 @@
 import React from 'react';
-import TidesListItem from './TiListItem';
+import TidesListItem from './TidesListItem';
 
-const TidesHeightList = props => {
-  let heights = props.heights;
+const TidesHeightList = ({ heights }) => {
   return (
     <div className="ui segment">
       <h3>{`Heights 24 Hour Forecast`}</h3>

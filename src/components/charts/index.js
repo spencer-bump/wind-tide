@@ -1,11 +1,11 @@
-import TeDailyHighLowChart  from './TeDailyHighLowChart';
-import WiHourlyChart        from './WiHourlyChart';
-import TeHourlyChart        from './TeHourlyChart';
-import TiHeightChart        from './TiHeightChart';
-import WiDailyChart         from './WiDailyChart';
+import _TempDailyHighLowChart  from './TempDailyHighLowChart';
+import _TempHourlyChart        from './TempHourlyChart';
+import _TidesHeightChart        from './TidesHeightChart';
+import _WindDailyChart         from './WindDailyChart';
+import _WindHourlyChart        from './WindHourlyChart';
 
-export const TempDailyHighLowChart = TeDailyHighLowChart;
-export const WindHourlyChart       = WiHourlyChart;
-export const TempHourlyChart       = TeHourlyChart;
-export const TidesHeightChart      = TiHeightChart;
-export const WindDailyChart        = WiDailyChart;
+export const TempDailyHighLowChart = _TempDailyHighLowChart;
+export const TempHourlyChart       = _TempHourlyChart;
+export const TidesHeightChart      = _TidesHeightChart;
+export const WindDailyChart        = _WindDailyChart;
+export const WindHourlyChart       = _WindHourlyChart;

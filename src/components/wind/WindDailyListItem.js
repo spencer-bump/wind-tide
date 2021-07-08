@@ -1,8 +1,7 @@
 import React from 'react';
-import WindDailyAccordion from '../wind/WiDailyAccordion';
+import WindDailyAccordion from '../wind/WindDailyAccordion';
 
-const WindDailyListItem = props => {
-  const day = props.day;
+const WindDailyListItem = ({ day }) => {
   return (
     <div className="ui segment" key={day.time}>
       <WindDailyAccordion  day={day} />

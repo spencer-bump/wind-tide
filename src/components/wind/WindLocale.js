@@ -1,8 +1,7 @@
 import React from 'react';
 
-const WindLocale = props => {
-  const weather    = props.weather,
-        flags      = weather.flags;
+const WindLocale = ({ weather }) => {
+  const flags = weather.flags;
   return (
     <div>
       <div className="ui segment">

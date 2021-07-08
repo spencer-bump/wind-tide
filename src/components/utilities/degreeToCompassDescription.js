@@ -1,4 +1,4 @@
-const degreeToCompassDescription = (degrees) => {
+export const degreeToCompassDescription = (degrees) => {
   const description =
     (((348.75 <= degrees) && (degrees <= 360)) || ((0 <= degrees) && (degrees < 11.25))) ? "North" :
     ((11.25 <= degrees)  && (degrees < 33.75))  ? "North Northeast" :
