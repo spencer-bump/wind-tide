@@ -1,38 +1,39 @@
 import React from 'react';
-import {
-          VictoryAxis,
-          VictoryLine,
-          VictoryChart,
-          VictoryTheme
-        } from 'victory';
+import { VictoryAxis, VictoryLine, VictoryChart, VictoryTheme } from 'victory';
 import { showDay, showMoDay } from '../utilities/displayTime';
 
-const TempDailyHighLowChart = props => {
+const TempNextSevenDaysChart = props => {
   const hours = props.data.slice(0,24);
+  let maxTemperature = 0;
+  let minTemperature = 100;
   const highsData = hours.map( hour => {
-      return {
-        "time": showDay(hour.time),
-        "highs": hour.temperatureMax
-      }
-    });
+    maxTemperature = maxTemperature < hour.temperatureMax ? hour.temperatureMax : maxTemperature;
+    return {
+      "time": showDay(hour.time),
+      "highs": hour.temperatureMax
+    }
+  });
   const lowsData = hours.map( hour => {
-      return {
-        "time": showDay(hour.time),
-        "lows": hour.temperatureMin
-      }
-    });
+    minTemperature = minTemperature > hour.temperatureMin ? hour.temperatureMin : minTemperature;
+    return {
+      "time": showDay(hour.time),
+      "lows": hour.temperatureMin
+    }
+  });
   const tickLabels = highsData.map((point, index) => {
-      if (index % 1 === 0) {
-          return point.time
-      } else {
-          return ""
-      }
-    });
+    if (index % 1 === 0) {
+        return point.time
+    } else {
+        return ""
+    }
+  });
   return (
       <div>
         <h3 className="ui header">{`Highs & Lows Forecast ${showMoDay(hours[0].time)} to ${showMoDay(hours[7].time)}`}</h3>
         <VictoryChart
           theme={VictoryTheme.material}
+          maxDomain={{ y: maxTemperature*1.05}}
+          minDomain={{ y: minTemperature*0.95}}
         >
           <VictoryLine
             data={highsData}
@@ -45,15 +46,16 @@ const TempDailyHighLowChart = props => {
             y="lows"
           />
           <VictoryAxis
-            tickValues={[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]}
+            tickValues={[1,2,3,4,5,6,7,8]}
             tickFormat={tickLabels}
           />
           <VictoryAxis
             dependentAxis
+            orientation="left"
           />
         </VictoryChart>
       </div>
     );
 };
 
-export default TempDailyHighLowChart;
+export default TempNextSevenDaysChart;

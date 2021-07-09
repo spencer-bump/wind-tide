@@ -1,15 +1,18 @@
 import React from 'react';
 import { showAmPm, showHrMn, showMoDayYr } from '../utilities/displayTime';
+import { uvRating } from '../utilities';
+
 import WindCurrentlyListItem from '../wind/WindCurrentlyListItem';
+
 
 const WindCurrentlyList = ({ currently }) => {
     return (
-      <div className="ui segment">
-        <h3 className="ui header">{`${showHrMn(currently.time)} ${showAmPm(currently.time)} ${showMoDayYr(currently.time)}`}</h3>
-        <div className="ui list">
-          <WindCurrentlyListItem currently={currently} />
-        </div>
+      <div className="ui list">
+        <div>{currently.summary}</div>
+        <div>{(currently.temperature).toFixed(0)} Farenheight</div>
+        <div>UV Index: {uvRating(currently.uvIndex)}</div>
       </div>
+
     )
 };
 

@@ -1,16 +1,9 @@
-
 import React from 'react';
-import {
-  VictoryAxis,
-  VictoryChart,
-  VictoryLine,
-  VictoryScatter,
-  VictoryTheme
-  } from 'victory';
+import { VictoryAxis, VictoryChart, VictoryLine, VictoryScatter, VictoryTheme } from 'victory';
 
 import { showHr, showHrMn, showAP, showMoDay } from '../utilities/displayTime';
 
-const TidesHeightChart = ({ heights, extremes }) => {
+const TidesTodayChart = ({ heights, extremes }) => {
   const plotData = heights.map((height, index) => {
     return {
       "time": showHr(height.timestamp)+showAP(height.timestamp),
@@ -45,6 +38,9 @@ const TidesHeightChart = ({ heights, extremes }) => {
   return (
       <div>
         <h3 className="ui header">{`Tides for ${showMoDay(heights[0].timestamp)}`}</h3>
+        <div className="ui segment">
+          <div className="ui item">{`Current tide content`}</div>
+        </div>
         <VictoryChart
           theme={VictoryTheme.material}
           minDomain={{y: -2.0}}
@@ -80,4 +76,4 @@ const TidesHeightChart = ({ heights, extremes }) => {
   )
 }
 
-export default TidesHeightChart;
+export default TidesTodayChart;

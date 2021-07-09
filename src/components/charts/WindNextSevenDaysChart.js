@@ -1,33 +1,21 @@
 import React from 'react';
-import {
-  VictoryAxis,
-  VictoryChart,
-  VictoryLine,
-  VictoryTheme
-  } from 'victory';
+import { VictoryAxis, VictoryChart, VictoryLine, VictoryTheme, VictoryLegend } from 'victory';
 import { showDay, showMoDay } from '../utilities/displayTime';
 
-
-const WindDailyChart = ({ data }) => {
+const WindNextSevenDaysChart = ({ data }) => {
   const averageData = data.map( day => {
     return { "day": showDay(day.time), "speed": day.windSpeed }
   });
-
   const gustData = data.map( day => {
     return { "day": showDay(day.time), "speed": day.windGust}
   });
-
   const tickLabels = averageData.map((point, index) => {
-
-        return point.day
-
+    return point.day
   });
-
-
 
   return(
     <div>
-      <h3 className="ui header">{`Daily Wind Forecast ${showMoDay(data[0].time)} to ${showMoDay(data[7].time)}`}</h3>
+      <h3 className="ui header">{`Wind Forecast ${showMoDay(data[0].time)} to ${showMoDay(data[7].time)}`}</h3>
       <VictoryChart
         theme={VictoryTheme.material}
       >
@@ -53,8 +41,17 @@ const WindDailyChart = ({ data }) => {
           dependentAxis
         />
       </VictoryChart>
+         <VictoryLegend x={60} y={0}
+          orientation="horizontal"
+          gutter={8}
+          height={50}
+          data={[
+                  { name: "Average (mph)", symbol: { fill: "black"} },
+                  { name: "Gust (mph)", symbol: { fill: "#c43a31" } }
+                ]}
+          />
     </div>
   )
 }
 
-export default WindDailyChart;
+export default WindNextSevenDaysChart;

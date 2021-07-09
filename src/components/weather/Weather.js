@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Tab } from 'semantic-ui-react'
-// Actions
-import { fetchWeather, fetchMockWeather, fetchMockTides, fetchPlaceholder } from '../../actions';
+import { fetchWeather, fetchMockWeather, fetchMockTides, fetchPlaceholder }
+        from '../../actions';
+import { WindCurrentlyList, WindDailyList,WindHourlyList }
+        from '../wind';
+import { TidesExtremeList, TidesHeightList, TidesFooter, TidesSnapshot }
+         from '../tides';
+import { WindTodayChart, TempNextSevenDaysChart, TempTodayChart,
+         TidesTodayChart, WindNextSevenDaysChart, UVIndexTodayChart,
+         VictoryStackChart, RainNextSevenDaysChart, RainTodayChart }
+         from '../charts';
+import { showAmPm, showHrMn, showMoDayYr } from '../utilities/displayTime';
 import WeatherFooter  from './WeatherFooter';
-import { WindCurrentlyList, WindDailyList, WindHourlyList } from '../wind';
-// Tide Components
-import { TidesExtremeList, TidesHeightList, TidesFooter, TidesSnapshot } from '../tides';
-// Charts
-import { WindHourlyChart, TempDailyHighLowChart, TempHourlyChart, TidesHeightChart, WindDailyChart }  from '../charts';
-
-
 
 class Weather extends Component {
 
@@ -45,33 +47,58 @@ class Weather extends Component {
   //   }, timeLeft, fetch);  //wait until 4:00 as calculated above
   // }
 
-  renderSplash = (weather, tides) => {
+  renderToday = (weather, tides) => {
     return (
       <div >
-        <WindCurrentlyList currently={weather.currently} />
         <div className="ui segment">
-          <WindHourlyChart data={weather.hourly.data} />
+          <WindTodayChart data={weather.hourly.data} currently={weather.currently}/>
         </div>
         <div className="ui segment">
-          <TidesHeightChart heights={tides.heights} extremes={tides.extremes}/>
+          <TempTodayChart data={weather.hourly.data} currently={weather.currently} />
         </div>
         <div className="ui segment">
-          <TempHourlyChart data={weather.hourly.data} />
+          <UVIndexTodayChart data={weather.hourly.data} currently={weather.currently} />
         </div>
-        <WeatherFooter weather={weather} />
+{/*        <div className="ui segment">
+          <RainTodayChart data={weather.hourly.data} currently={weather.currently} />
+        </div>*/}
+        <div className="ui segment">
+          <TidesTodayChart heights={tides.heights} extremes={tides.extremes}/>
+        </div>
+         <div className="ui segment">
+          <WeatherFooter weather={weather} />
+        </div>
+         <div className="ui segment">
+          <TidesFooter tides={tides} />
+        </div>
       </div>
     )
   }
 
-  renderWind = (weather, tides) => {
+  renderNextSevenDays = (weather, tides) => {
     return (
       <div >
         <div className="ui segment">
-          <WindDailyChart data={weather.daily.data} />
+          <WindNextSevenDaysChart data={weather.daily.data} />
         </div>
         <div className="ui segment">
-          <WindHourlyChart data={weather.hourly.data} />
+          <TempNextSevenDaysChart data={weather.daily.data} />
         </div>
+{/*        <div className="ui segment">
+          <RainNextSevenDaysChart data={weather.daily.data} />
+        </div>*/}
+        <div className="ui segment">
+          <WeatherFooter weather={weather} />
+        </div>
+
+      </div>
+    )
+  }
+
+
+  renderLists = (weather, tides) => {
+    return (
+      <div>
         <div className="ui list">
           <div className="ui item">
             <WindDailyList timeNow={weather.currently.time} daily={weather.daily} />
@@ -80,38 +107,14 @@ class Weather extends Component {
             <WindHourlyList timeNow={weather.currently.time} hourly={weather.hourly} />
           </div>
           <div className="ui item">
-            <WeatherFooter weather={weather} />
+            <TidesExtremeList timeNow={tides.timestamp} extremes={tides.extremes} />
+          </div>
+          <div className="ui item">
+            <TidesHeightList timeNow={tides.timestamp} heights={tides.heights} />
           </div>
         </div>
-
-      </div>
-    )
-  }
-
-  renderTides = (weather, tides) => {
-    return (
-      <div >
-        <div className="ui segment">
-          <TidesHeightChart heights={tides.heights} extremes={tides.extremes}/>
-        </div>
-        <TidesSnapshot heights={tides.heights} extremes={tides.extremes} />
-        <TidesExtremeList timeNow={tides.timestamp} extremes={tides.extremes} />
-        <TidesHeightList timeNow={tides.timestamp} heights={tides.heights} />
-        <TidesFooter tides={tides} />
-      </div>
-    )
-  }
-
-  renderTemps = (weather, tides) => {
-    return (
-      <div>
-        <div className="ui segment">
-          <TempHourlyChart data={weather.hourly.data} />
-        </div>
-        <div className="ui segment">
-          <TempDailyHighLowChart data={weather.daily.data} />
-        </div>
         <WeatherFooter weather={weather} />
+        <TidesFooter tides={tides} />
       </div>
     )
   }
@@ -131,10 +134,9 @@ class Weather extends Component {
             tides     = this.props.tides,
             placeholder = this.props.placeholder;
       const panes = [
-        { menuItem: 'Home', render: () => <Tab.Pane>{this.renderSplash(weather, tides)}</Tab.Pane> },
-        { menuItem: 'Wind', render: () => <Tab.Pane>{this.renderWind(weather, tides)}</Tab.Pane> },
-        { menuItem: 'Tides', render: () => <Tab.Pane>{this.renderTides(weather, tides)}</Tab.Pane> },
-        { menuItem: 'Temps', render: () => <Tab.Pane>{this.renderTemps(weather, tides)}</Tab.Pane> }
+        { menuItem: 'Today', render: () => <Tab.Pane>{this.renderToday(weather, tides)}</Tab.Pane> },
+        { menuItem: 'Next 7 Days', render: () => <Tab.Pane>{this.renderNextSevenDays(weather, tides)}</Tab.Pane> },
+        { menuItem: 'Lists', render: () => <Tab.Pane>{this.renderLists(weather, tides)}</Tab.Pane> }
 
       ]
 
