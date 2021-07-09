@@ -1,8 +1,8 @@
 import React from 'react';
 import { showAmPm, showHrMn } from '../utilities/displayTime';
-import WindHourlyListItem from '../wind/WindHourlyListItem';
+import WindTodayListItem from '../wind/WindTodayListItem';
 
-const WindHourlyList = ({ hourly, timeNow }) => {
+const WindTodayList = ({ hourly, timeNow }) => {
   return (
     <div className="ui ">
       <h3 className="ui header">
@@ -17,7 +17,7 @@ const WindHourlyList = ({ hourly, timeNow }) => {
               }
               return (
                 <div key={hour.time} className="item">
-                  <WindHourlyListItem hour={hour}/>
+                  <WindTodayListItem hour={hour}/>
                 </div>
               )
             })
@@ -27,4 +27,4 @@ const WindHourlyList = ({ hourly, timeNow }) => {
   );
 };
 
-export default WindHourlyList;
+export default WindTodayList;

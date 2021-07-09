@@ -3,7 +3,7 @@ const findNextTideExtreme = ({ extremes }) => {
   // TODO: use futureTimeNowVariable when converting
   //       from mock data.
   // convert to seconds and remove decimals
-  const futureTimeNowVariable = (Date.now()/1000).toFixed(0);
+  // const futureTimeNowVariable = (Date.now()/1000).toFixed(0);
 
   if (timeNow < extremes[0].timestamp) {
       return extremes[0]

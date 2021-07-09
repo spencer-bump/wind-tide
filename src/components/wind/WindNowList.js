@@ -1,11 +1,8 @@
 import React from 'react';
-import { showAmPm, showHrMn, showMoDayYr } from '../utilities/displayTime';
 import { uvRating } from '../utilities';
 
-import WindCurrentlyListItem from '../wind/WindCurrentlyListItem';
 
-
-const WindCurrentlyList = ({ currently }) => {
+const WindNowList = ({ currently }) => {
     return (
       <div className="ui list">
         <div>{currently.summary}</div>
@@ -16,4 +13,4 @@ const WindCurrentlyList = ({ currently }) => {
     )
 };
 
-export default WindCurrentlyList;
+export default WindNowList;

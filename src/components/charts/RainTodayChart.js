@@ -2,17 +2,15 @@ import React from 'react';
 import {  VictoryAxis, VictoryLine,
           VictoryChart, VictoryTheme,
           VictoryLegend } from 'victory';
-import { showAP, showHr, showDay, showMoDay } from '../utilities/displayTime';
-
+import { showAP, showHr, showMoDay } from '../utilities/displayTime';
+// *******
+// pulled from view until new mock data or api calls
+// ******
 const RainTodayChart = ({ data, currently}) => {
   const hours = data.slice(0,24);
-  // TODO: remove for timeOffset calculation when convert from mock to api call
-  const dayInSeconds = 24*60*60;
-  let timeOffset = -24*60*60;
   let maxProbability = 0;
   let minProbability = 1.0;
   const rainPrecipProb = hours.map( hour => {
-      timeOffset += dayInSeconds;
       maxProbability = maxProbability < hour.precipProbability ? hour.precipProbability : maxProbability;
       minProbability = minProbability > hour.precipProbability ? hour.precipProbability : minProbability;
       return {
@@ -29,7 +27,7 @@ const RainTodayChart = ({ data, currently}) => {
     });
   return (
       <div>
-        <h3 className="ui header">{`Rain Probability for ${showMoDay(hours[0].time)}`}</h3>
+        <h3 className="ui header">{`Rain Probability: ${showMoDay(hours[0].time)}`}</h3>
 
         <VictoryChart
           theme={VictoryTheme.material}

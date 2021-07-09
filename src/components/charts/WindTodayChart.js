@@ -2,8 +2,10 @@ import React from 'react';
 import {  VictoryAxis, VictoryChart,
           VictoryLegend, VictoryLine,
           VictoryTheme } from 'victory';
-import { showAP, showAmPm, showHr, showHrMn, showMoDay, showMoDayYr } from '../utilities/displayTime';
-import { degreeToCompass, uvRating } from '../utilities';
+import {  showAP, showAmPm,
+          showHr, showHrMn,
+          showMoDay } from '../utilities/displayTime';
+import { degreeToCompass } from '../utilities';
 
 const WindTodayChart = ({ data, currently }) => {
   const hours = data.slice(0, 24); // 24 hr forecast
@@ -33,9 +35,9 @@ const WindTodayChart = ({ data, currently }) => {
 
   return (
     <div>
-      <h3 className="ui header">{`Winds for ${showMoDay(hours[0].time)} at ${showHrMn(currently.time)} ${showAmPm(currently.time)}`}</h3>
+      <h3 className="ui header">{`Winds: ${showMoDay(hours[0].time)} at ${showHrMn(currently.time)} ${showAmPm(currently.time)}`}</h3>
       <div className="ui segment">
-        <div className="ui item">{`Currently: ${degreeToCompass(currently.windBearing)} at ${(currently.windSpeed).toFixed(0)} gusting to ${(currently.windGust).toFixed(0)} mph`}</div>
+        <div className="ui item">{`Now: ${degreeToCompass(currently.windBearing)} at ${(currently.windSpeed).toFixed(0)} gusting to ${(currently.windGust).toFixed(0)} mph`}</div>
       </div>
       <VictoryChart
         theme={VictoryTheme.material}

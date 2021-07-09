@@ -1,8 +1,8 @@
 import React from 'react';
 import { showMoDay, showMoDayYr } from '../utilities/displayTime';
-import WindDailyListItem from '../wind/WindDailyListItem';
+import WindWeekListItem from '../wind/WindWeekListItem';
 
-const WindDailyList = ({ daily }) => {
+const WindWeekList = ({ daily }) => {
   let data = daily.data;
   let lastDay = data.length - 1;
   return (
@@ -14,7 +14,7 @@ const WindDailyList = ({ daily }) => {
           data.map(day => {
             return (
               <div key={day.time}>
-                <WindDailyListItem day={day} />
+                <WindWeekListItem day={day} />
               </div>
             )
           })
@@ -24,4 +24,4 @@ const WindDailyList = ({ daily }) => {
   );
 };
 
-export default WindDailyList;
+export default WindWeekList;

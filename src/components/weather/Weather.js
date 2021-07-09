@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Tab } from 'semantic-ui-react'
 import { fetchWeather, fetchMockWeather, fetchMockTides, fetchPlaceholder }
         from '../../actions';
-import { WindCurrentlyList, WindDailyList,WindHourlyList }
+import { WindCurrentlyList, WindWeekList, WindTodayList }
         from '../wind';
 import { TidesExtremeList, TidesHeightList, TidesFooter, TidesSnapshot }
          from '../tides';
@@ -101,10 +101,10 @@ class Weather extends Component {
       <div>
         <div className="ui list">
           <div className="ui item">
-            <WindDailyList timeNow={weather.currently.time} daily={weather.daily} />
+            <WindWeekList timeNow={weather.currently.time} daily={weather.daily} />
           </div>
           <div className="ui item">
-            <WindHourlyList timeNow={weather.currently.time} hourly={weather.hourly} />
+            <WindTodayList timeNow={weather.currently.time} hourly={weather.hourly} />
           </div>
           <div className="ui item">
             <TidesExtremeList timeNow={tides.timestamp} extremes={tides.extremes} />

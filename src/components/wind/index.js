@@ -1,7 +1,7 @@
-import _WindCurrentlyList  from './WindCurrentlyList';
-import _WindDailyList      from './WindDailyList';
-import _WindHourlyList     from './WindHourlyList';
+import _WindNowList  from './WindNowList';
+import _WindWeekList      from './WindWeekList';
+import _WindTodayList     from './WindTodayList';
 
-export const WindCurrentlyList  = _WindCurrentlyList;
-export const WindDailyList      = _WindDailyList;
-export const WindHourlyList     = _WindHourlyList;
+export const WindNowList  = _WindNowList;
+export const WindWeekList      = _WindWeekList;
+export const WindTodayList     = _WindTodayList;

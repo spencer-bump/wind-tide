@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { showAmPm, showHr } from '../utilities/displayTime';
 import { degreeToCompass, uvRating } from '../utilities';
 
-const WindHourlyAccordion = ({ hour }) => {
+const WindTodayAccordion = ({ hour }) => {
 
   const [activeIndex, setActiveIndex] = useState('');
 
@@ -38,4 +38,4 @@ const WindHourlyAccordion = ({ hour }) => {
 };
 
 
-export default WindHourlyAccordion;
+export default WindTodayAccordion;

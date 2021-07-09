@@ -1,16 +1,14 @@
 import React from 'react';
 import { showHr, showHrMn, showAmPm } from '../utilities/displayTime';
-import { findNextTideExtreme, findCurrentTideHeight } from '../utilities';
 
 const TidesSnapshot = ({ extremes, heights }) => {
-
 
   const timeNow = 1624747238;
 
   // TODO: use futureTimeNowVariable when converting
   //       from mock data.
   // convert to seconds and remove decimals
-  const futureTimeNowVariable = (Date.now()/1000).toFixed(0);
+  // const futureTimeNowVariable = (Date.now()/1000).toFixed(0);
 
   let nextExtremeIndex = -1;
   if (timeNow < extremes[0].timestamp) {
@@ -40,10 +38,10 @@ const TidesSnapshot = ({ extremes, heights }) => {
   //     <div>
   //        Tide Latest Info for {`${showHr(timeNow)}${showAmPm(timeNow)}`}
   //        <div>
-  //         {`Current Height: ${(findCurrentTideHeight(heights).height).toFixed(1)}`}
+  //         {`Current Height: ${((heights).height).toFixed(1)}`}
   //        </div>
   //        <div>
-  //         {`Next Extreme: ${showHrMn(findNextTideExtreme(extremes).timestamp)}${showAmPm(findNextTideExtreme(extremes).timestamp)}`}
+  //         {`Next Extreme: ${showHrMn((extremes).timestamp)}${showAmPm((extremes).timestamp)}`}
   //        </div>
 
   //     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { degreeToCompass, uvRating } from '../utilities';
 
-const WindCurrentlyListItem = ({ currently }) => {
+const WindNowListItem = ({ currently }) => {
   return (
     <div className="ui item">
       <h3 className="ui heading">{`Winds ${degreeToCompass(currently.windBearing)} at ${(currently.windSpeed).toFixed(0)} gusting to ${(currently.windGust).toFixed(0)} mph`}</h3>
@@ -11,4 +11,4 @@ const WindCurrentlyListItem = ({ currently }) => {
   )
 }
 
-export default WindCurrentlyListItem;
+export default WindNowListItem;

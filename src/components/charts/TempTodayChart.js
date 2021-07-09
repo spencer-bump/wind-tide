@@ -31,9 +31,9 @@ const TempTodayChart = ({ data, currently }) => {
 
   return (
       <div>
-        <h3 className="ui header">{`Temperatures for ${showMoDay(hours[0].time)} at ${showHrMn(currently.time)} ${showAmPm(currently.time)}`}</h3>
+        <h3 className="ui header">{`Temperatures: ${showMoDay(hours[0].time)} at ${showHrMn(currently.time)} ${showAmPm(currently.time)}`}</h3>
         <div className="ui segment">
-          <div className="ui item">{`Currently :  ${currently.temperature.toFixed(0)} F`}</div>
+          <div className="ui item">{`Now:  ${currently.temperature.toFixed(0)} F`}</div>
         </div>
         <VictoryChart
           theme={VictoryTheme.material}

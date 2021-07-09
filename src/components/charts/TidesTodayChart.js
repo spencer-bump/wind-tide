@@ -1,7 +1,7 @@
 import React from 'react';
 import { VictoryAxis, VictoryChart, VictoryLine, VictoryScatter, VictoryTheme } from 'victory';
 
-import { showHr, showHrMn, showAP, showMoDay } from '../utilities/displayTime';
+import { showHr, showHrMn, showAmPm, showAP, showMoDay } from '../utilities/displayTime';
 
 const TidesTodayChart = ({ heights, extremes }) => {
   const plotData = heights.map((height, index) => {
@@ -26,6 +26,33 @@ const TidesTodayChart = ({ heights, extremes }) => {
     }
   })
 
+  // for Mock Data, change to "new Date().now()"
+  const timeNow = 1624747238;
+
+  let nextExtremeIndex = -1;
+  if (timeNow < extremes[0].timestamp) {
+      nextExtremeIndex = 0
+  } else {
+    for (let i = 0, len = extremes.length-1; i < len; i++) {
+      if (extremes[i].timestamp <= timeNow && timeNow <= extremes[i+1].timestamp) {
+        nextExtremeIndex = i + 1
+        break;
+      }
+    }
+  }
+
+  let currentHeightIndex = -1;
+  if (timeNow < heights[0].timestamp) {
+    currentHeightIndex = 0
+  } else {
+    for (let i = 0, len = heights.length-1; i < len; i++ ) {
+      if (heights[i].timestamp <= timeNow && timeNow < heights[i+1].timestamp) {
+        currentHeightIndex = i;
+        break;
+      }
+    }
+    }
+
 
   const tickLabels = plotData.map((point, index) => {
       if (index % 3 === 0) {
@@ -37,9 +64,14 @@ const TidesTodayChart = ({ heights, extremes }) => {
 
   return (
       <div>
-        <h3 className="ui header">{`Tides for ${showMoDay(heights[0].timestamp)}`}</h3>
+        <h3 className="ui header">{`Tides: ${showMoDay(heights[0].timestamp)} at ${showHrMn(timeNow)} ${showAmPm(timeNow)}`}</h3>
         <div className="ui segment">
-          <div className="ui item">{`Current tide content`}</div>
+          <div className="ui item">
+            {`Current Height: ${(heights[currentHeightIndex].height).toFixed(2)}`}
+          </div>
+          <div className="ui item">
+            {`Next Extreme: ${showHrMn(extremes[nextExtremeIndex].timestamp)} ${showAmPm(extremes[nextExtremeIndex].timestamp)}`}
+          </div>
         </div>
         <VictoryChart
           theme={VictoryTheme.material}

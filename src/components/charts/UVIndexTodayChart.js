@@ -55,9 +55,9 @@ const UVIndexTodayChart = ({ data, currently }) => {
 
   return (
       <div className="ui container">
-        <h3 className="ui header">{`UV Index for ${showMoDay(hours[0].time)} at ${showHrMn(currently.time)} ${showAmPm(currently.time)}`}</h3>
+        <h3 className="ui header">{`UV Index: ${showMoDay(hours[0].time)} at ${showHrMn(currently.time)} ${showAmPm(currently.time)}`}</h3>
         <div className="ui segment">
-          {`Currently: UV is ${uvRating(currently.uvIndex)} at ${currently.uvIndex}`}
+          {`Now: UV is ${uvRating(currently.uvIndex)} at ${currently.uvIndex}`}
         </div>
         <VictoryChart
           theme={VictoryTheme.material}

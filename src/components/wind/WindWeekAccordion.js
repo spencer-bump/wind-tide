@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { showMoDay } from '../utilities/displayTime';
 import { degreeToCompass, moonPhaseDescription } from '../utilities';
 
-const WindDailyAccordion = ({ day }) => {
+const WindWeekAccordion = ({ day }) => {
 
   const [activeIndex, setActiveIndex] = useState('');
 
@@ -38,4 +38,4 @@ const WindDailyAccordion = ({ day }) => {
 };
 
 
-export default WindDailyAccordion;
+export default WindWeekAccordion;

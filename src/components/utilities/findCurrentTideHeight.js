@@ -3,9 +3,7 @@ const findCurrentTideHeight = ({ heights }) => {
   // TODO: use futureTimeNowVariable when converting
   //       from mock data.
   // convert to seconds and remove decimals
-  const futureTimeNowVariable = (Date.now()/1000).toFixed(0);
-
-  let currentHeightIndex = -1;
+  // const futureTimeNowVariable = (Date.now()/1000).toFixed(0);
   if (timeNow < heights[0].timestamp) {
     return heights[0];
   } else {
