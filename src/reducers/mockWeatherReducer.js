@@ -6,5 +6,5 @@ export const mockWeatherReducer = (state = [], action) => {
       return action.payload;
     default:
       return state;
-  };
+  }
 };

@@ -6,5 +6,5 @@ export const mockTidesReducer = (state = [], action) => {
       return action.payload;
     default:
       return state;
-  };
+  }
 };

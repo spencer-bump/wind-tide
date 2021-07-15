@@ -8,9 +8,6 @@ import {  showAmPm, showAP,
 
 const TempTodayChart = ({ data, currently }) => {
   const hours = data.slice(0,24);
-  console.log("currently: ", currently)
-  console.log(showMoDay(currently.time))
-  console.log(showHr(currently.time))
   let minTemperature = 200;
   let maxTemperature = 0;
   const temperatureData = hours.map( hour => {

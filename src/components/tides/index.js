@@ -1,10 +1,10 @@
 // Tide Components
-import _TidesExtremeList from './TidesExtremeList'
-import _TidesHeightList  from './TidesHeightList'
+import _TidesTodayExtremeList from './TidesTodayExtremeList'
+import _TidesTodayHeightList  from './TidesTodayHeightList'
 import _TidesFooter      from './TidesFooter'
 import _TidesSnapshot    from './TidesSnapshot'
 
-export const TidesExtremeList = _TidesExtremeList
-export const TidesHeightList  = _TidesHeightList
+export const TidesTodayExtremeList = _TidesTodayExtremeList
+export const TidesTodayHeightList  = _TidesTodayHeightList
 export const TidesFooter      = _TidesFooter
 export const TidesSnapshot    = _TidesSnapshot

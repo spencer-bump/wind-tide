@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Tab } from 'semantic-ui-react'
-import { fetchWeather, fetchMockWeather, fetchMockTides, fetchPlaceholder }
+import { Tab } from 'semantic-ui-react';
+import socketIOClient from "socket.io-client";
+
+import { showMoDayYr, showAmPm, showHrMn } from '../utilities/displayTime';
+import { fetchExpressWeather, fetchExpressTides, fetchWeather, fetchMockWeather, fetchMockTides, fetchPlaceholder }
         from '../../actions';
-import { WindCurrentlyList, WindWeekList, WindTodayList }
+import { WindWeekList, WindTodayList }
         from '../wind';
-import { TidesExtremeList, TidesHeightList, TidesFooter, TidesSnapshot }
+import { TidesTodayExtremeList, TidesTodayHeightList, TidesFooter }
          from '../tides';
 import { WindTodayChart, TempNextSevenDaysChart, TempTodayChart,
          TidesTodayChart, WindNextSevenDaysChart, UVIndexTodayChart,
-         VictoryStackChart, RainNextSevenDaysChart, RainTodayChart }
+         RainNextSevenDaysChart, RainTodayChart }
          from '../charts';
-import { showAmPm, showHrMn, showMoDayYr } from '../utilities/displayTime';
 import WeatherFooter  from './WeatherFooter';
+
 
 class Weather extends Component {
 
   componentDidMount() {
-    this.props.fetchMockWeather();
-    this.props.fetchMockTides();
+    // this.props.fetchMockWeather();
+    // this.props.fetchMockTides();
     // this.props.fetchNewTides();
     this.props.fetchPlaceholder();
+    this.props.fetchExpressWeather();
+    this.props.fetchExpressTides();
 
   };
 
@@ -107,10 +112,10 @@ class Weather extends Component {
             <WindTodayList timeNow={weather.currently.time} hourly={weather.hourly} />
           </div>
           <div className="ui item">
-            <TidesExtremeList timeNow={tides.timestamp} extremes={tides.extremes} />
+            <TidesTodayExtremeList timeNow={tides.timestamp} extremes={tides.extremes} />
           </div>
           <div className="ui item">
-            <TidesHeightList timeNow={tides.timestamp} heights={tides.heights} />
+            <TidesTodayHeightList timeNow={tides.timestamp} heights={tides.heights} />
           </div>
         </div>
         <WeatherFooter weather={weather} />
@@ -121,18 +126,22 @@ class Weather extends Component {
 
 
   render() {
-    if (this.props.weather.length === 0 ||
+    if (this.props.expressWeather.length === 0 ||
         this.props.placeholder.length === 0 ||
-        this.props.tides.length === 0) {
+        this.props.expressTides.length === 0) {
       return (
         <div>
           Loading ...
         </div>
       )
     } else {
-      const weather   = this.props.weather,
-            tides     = this.props.tides,
+      // const weather   = this.props.weather,
+      //       tides     = this.props.tides,
+      //       placeholder = this.props.placeholder;
+      const weather = this.props.expressWeather,
+            tides = this.props.expressTides,
             placeholder = this.props.placeholder;
+
       const panes = [
         { menuItem: 'Today', render: () => <Tab.Pane>{this.renderToday(weather, tides)}</Tab.Pane> },
         { menuItem: 'Next 7 Days', render: () => <Tab.Pane>{this.renderNextSevenDays(weather, tides)}</Tab.Pane> },
@@ -142,7 +151,7 @@ class Weather extends Component {
 
       return (
         <div>
-          <h3>{`Kanaha Beach Park`}</h3>
+          <h3>{`Kanaha Beach ${showMoDayYr(weather.currently.time)} at ${showHrMn(weather.currently.time)} ${showAmPm(weather.currently.time)}`}</h3>
           <Tab panes={panes} />
 
 
@@ -167,13 +176,17 @@ const mapStateToProps = state => {
   return {
     weather: state.mockWeather,
     tides: state.mockTides,
-    placeholder: state.placeholder
+    placeholder: state.placeholder,
+    expressWeather: state.expressWeather,
+    expressTides: state.expressTides
   }
 }
 
 export default connect(
   mapStateToProps,
   {
+    fetchExpressWeather,
+    fetchExpressTides,
     fetchWeather,
     fetchMockWeather,
     fetchMockTides,

@@ -6,7 +6,6 @@ const TiFooter = ({ tides }) => {
       <div>{`Tides Data Provider: ${tides.copyright}`}</div>
       <div>{`Data from Kahului Harbor`}</div>
       <div>{`Lat: ${(tides.latitude).toFixed(4)}, Long: ${tides.longitude.toFixed(4)}`}</div>
-
       <div>{`Provider Disclaimer: ${tides.disclaimer}`}</div>
     </div>
   );

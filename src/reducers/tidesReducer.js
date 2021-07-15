@@ -6,5 +6,5 @@ export const tidesReducer = (state = [], action) => {
       return action.payload;
     default:
       return state;
-  };
+  }
 };

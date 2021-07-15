@@ -67,7 +67,7 @@ const TidesTodayChart = ({ heights, extremes }) => {
         <h3 className="ui header">{`Tides: ${showMoDay(heights[0].timestamp)} at ${showHrMn(timeNow)} ${showAmPm(timeNow)}`}</h3>
         <div className="ui segment">
           <div className="ui item">
-            {`Current Height: ${(heights[currentHeightIndex].height).toFixed(2)}`}
+            {`Current Height: ${(heights[currentHeightIndex].height).toFixed(2)} ft`}
           </div>
           <div className="ui item">
             {`Next Extreme: ${showHrMn(extremes[nextExtremeIndex].timestamp)} ${showAmPm(extremes[nextExtremeIndex].timestamp)}`}

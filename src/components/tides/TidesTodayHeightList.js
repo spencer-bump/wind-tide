@@ -1,7 +1,7 @@
 import React from 'react';
-import TidesListItem from './TidesListItem';
+import TidesTodayListItem from './TidesTodayListItem';
 
-const TidesHeightList = ({ heights }) => {
+const TidesTodayHeightList = ({ heights }) => {
   return (
     <div className="ui segment">
       <h3>{`Heights 24 Hour Forecast`}</h3>
@@ -11,7 +11,7 @@ const TidesHeightList = ({ heights }) => {
           heights.map(height => {
             return (
               <div key={height.timestamp}>
-                <TidesListItem dataPoint={height} />
+                <TidesTodayListItem dataPoint={height} />
               </div>
               )
           })
@@ -21,4 +21,4 @@ const TidesHeightList = ({ heights }) => {
   );
 };
 
-export default TidesHeightList;
+export default TidesTodayHeightList;
