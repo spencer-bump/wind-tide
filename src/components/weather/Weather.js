@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Tab } from 'semantic-ui-react';
 
 import { showMoDayYr, showAmPm, showHrMn } from '../utilities/displayTime';
-import { fetchMongoDBWeather, fetchExpressWeather, fetchExpressTides, fetchWeather, fetchPlaceholder }
+import { fetchMongoDBWeather, fetchExpressTides, fetchWeather, fetchPlaceholder }
         from '../../actions';
 import { WindWeekList, WindTodayList }
         from '../wind';
@@ -21,7 +21,6 @@ class Weather extends Component {
   componentDidMount() {
     // this.props.fetchNewTides();
     this.props.fetchPlaceholder();
-    this.props.fetchExpressWeather();
     this.props.fetchExpressTides();
     this.props.fetchMongoDBWeather();
 
@@ -126,28 +125,23 @@ class Weather extends Component {
   render() {
     if (this.props.weather.length         === 0 ||
         this.props.tides.length           === 0 ||
-        this.props.placeholder.length     === 0 ||
-        this.props.mongodbWeather.length  === 0 ) {
+        this.props.placeholder.length     === 0  ) {
       return (
         <div>
           Loading ...
         </div>
       )
     } else {
-      // const weather   = this.props.weather,
-      //       tides     = this.props.tides,
-      //       placeholder = this.props.placeholder;
-      const weather = this.props.weather,
+      const weather = this.props.weather[0],
             tides = this.props.tides,
-            placeholder = this.props.placeholder,
-            mongodbWeather = this.props.mongodbWeather;
+            placeholder = this.props.placeholder;
 
       const panes = [
         { menuItem: 'Today', render: () => <Tab.Pane>{this.renderToday(weather, tides)}</Tab.Pane> },
         { menuItem: 'Next 7 Days', render: () => <Tab.Pane>{this.renderNextSevenDays(weather, tides)}</Tab.Pane> },
         { menuItem: 'Lists', render: () => <Tab.Pane>{this.renderLists(weather, tides)}</Tab.Pane> }
       ];
-      console.log("mongoDb data: ", mongodbWeather[0][0].response)
+      console.log("mongoDb props data : ", weather)
 
       return (
         <div>
@@ -161,30 +155,17 @@ class Weather extends Component {
   }
 }
 
-// Real mapStateToProps
-// state.weather
-// const mapStateToProps = state => {
-//   debugger;
-//   return {
-//     weather: state.weather
-//   }
-// }
-
-// Mock mapStateToProps
-// state.mockWeather
 const mapStateToProps = state => {
   return {
-    weather: state.expressWeather,
+    weather: state.mongodbWeather,
     tides: state.expressTides,
-    placeholder: state.placeholder,
-    mongodbWeather: state.mongodbWeather
+    placeholder: state.placeholder
   }
 }
 
 export default connect(
   mapStateToProps,
   {
-    fetchExpressWeather,
     fetchExpressTides,
     fetchWeather,
     fetchPlaceholder,

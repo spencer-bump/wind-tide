@@ -66,8 +66,8 @@ export const fetchPlaceholder = () => async dispatch => {
 };
 
 export const fetchExpressWeather = () => async dispatch => {
-  const response = await axios.get("http://localhost:5000/weatherApi")
-  console.log("Express Weather: ", response.data)
+  const response = await axios.get("http://localhost:5000/weatherApi");
+  console.log("Express weather response: ", response.data);
   dispatch ({
       type:   FETCH_EXPRESS_WEATHER,
       payload: response.data
@@ -75,8 +75,8 @@ export const fetchExpressWeather = () => async dispatch => {
 };
 
 export const fetchExpressTides = () => async dispatch => {
-  const response = await axios.get("http://localhost:5000/tidesApi")
-  console.log("Express Tides: ", response.data)
+  const response = await axios.get("http://localhost:5000/tidesApi");
+  console.log("Express tides response: ", response.data);
   dispatch ({
       type:   FETCH_EXPRESS_TIDES,
       payload: response.data
@@ -84,26 +84,13 @@ export const fetchExpressTides = () => async dispatch => {
 };
 
 export const fetchMongoDBWeather = () => async dispatch => {
-  const response = await axios.get("http://localhost:5000/messages");
-  console.log("MongoDB Weather: ", response.data)
+  const response = await axios.get("http://localhost:5000/winds");
+  console.log("MongoDB weather response: ", response.data)
   dispatch ({
       type:   FETCH_MONGODB_WEATHER,
       payload: [response.data]
     });
 };
-
-//     headers: {
-//       "x-rapidapi-key": TIDES_KEY,
-//       "x-rapidapi-host": "tides.p.rapidapi.com",
-//       "useQueryString": true
-//     },
-//     params: {
-//       "latitude": "20.9030556",
-//       "longitude": "-156.4430556",
-//       "duration": "1440",
-//       "interval": "60"
-//     }
-
 
 const options = {
   method: 'GET',
