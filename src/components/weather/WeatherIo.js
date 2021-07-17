@@ -10,13 +10,14 @@ const socket = io("https://localhost:5000", {
   }
 });
 
-function SocketIo() {
+function WeatherIo() {
   const [response, setResponse] = useState("");
 
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT);
-    socket.on("FromAPI", data => {
+    socket.on("darksky", data => {
       setResponse(data);
+      // call fetch database
     });
   }, []);
 
@@ -28,4 +29,4 @@ function SocketIo() {
 }
 
 
-export default SocketIo;
+export default WeatherIo;

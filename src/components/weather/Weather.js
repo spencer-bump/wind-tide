@@ -14,7 +14,7 @@ import { WindTodayChart, TempNextSevenDaysChart, TempTodayChart,
          RainNextSevenDaysChart, RainTodayChart }
          from '../charts';
 import WeatherFooter  from './WeatherFooter';
-import SocketIo from './SocketIo';
+import WeatherIo from './WeatherIo';
 
 
 class Weather extends Component {
@@ -147,7 +147,7 @@ class Weather extends Component {
       return (
         <div>
           <h3>{`Kanaha Beach ${showMoDayYr(weather.currently.time)} at ${showHrMn(weather.currently.time)} ${showAmPm(weather.currently.time)}`}</h3>
-          <SocketIo />
+          <WeatherIo />
           <Tab panes={panes} />
 
 
